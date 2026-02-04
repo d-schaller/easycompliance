@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Plus, CheckCircle, Clock, XCircle } from "lucide-react";
 import { AddControlsDialog } from "./add-controls-dialog";
 import { ControlsTable } from "./controls-table";
+import { DownloadReportButton } from "./download-report-button";
 
 export default async function ProjectDetailPage({
   params,
@@ -136,11 +137,17 @@ export default async function ProjectDetailPage({
             <p className="mt-1 text-gray-600">{project.description}</p>
           )}
         </div>
-        <AddControlsDialog
-          projectId={project.id}
-          standards={standards}
-          existingControlIds={existingControlIds}
-        />
+        <div className="flex gap-2">
+          <DownloadReportButton
+            projectId={project.id}
+            projectName={project.name}
+          />
+          <AddControlsDialog
+            projectId={project.id}
+            standards={standards}
+            existingControlIds={existingControlIds}
+          />
+        </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
