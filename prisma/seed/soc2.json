@@ -1,0 +1,437 @@
+{
+  "standard": {
+    "name": "SOC 2 Trust Services Criteria",
+    "shortName": "SOC2",
+    "version": "2017",
+    "description": "SOC 2 (System and Organization Controls 2) is a framework developed by the AICPA for managing customer data based on five Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, and Privacy."
+  },
+  "controls": [
+    {
+      "code": "CC1.1",
+      "name": "COSO Principle 1: Integrity and Ethical Values",
+      "description": "The entity demonstrates a commitment to integrity and ethical values.",
+      "category": "CC1 - Control Environment",
+      "subcategory": "Integrity and Ethics"
+    },
+    {
+      "code": "CC1.2",
+      "name": "COSO Principle 2: Board Independence and Oversight",
+      "description": "The board of directors demonstrates independence from management and exercises oversight of internal control.",
+      "category": "CC1 - Control Environment",
+      "subcategory": "Board Oversight"
+    },
+    {
+      "code": "CC1.3",
+      "name": "COSO Principle 3: Management Structure and Authority",
+      "description": "Management establishes structures, reporting lines, and appropriate authorities and responsibilities.",
+      "category": "CC1 - Control Environment",
+      "subcategory": "Organizational Structure"
+    },
+    {
+      "code": "CC1.4",
+      "name": "COSO Principle 4: Commitment to Competence",
+      "description": "The entity demonstrates a commitment to attract, develop, and retain competent individuals.",
+      "category": "CC1 - Control Environment",
+      "subcategory": "Human Resources"
+    },
+    {
+      "code": "CC1.5",
+      "name": "COSO Principle 5: Accountability",
+      "description": "The entity holds individuals accountable for their internal control responsibilities.",
+      "category": "CC1 - Control Environment",
+      "subcategory": "Accountability"
+    },
+    {
+      "code": "CC2.1",
+      "name": "COSO Principle 13: Quality Information",
+      "description": "The entity obtains or generates and uses relevant, quality information to support the functioning of internal control.",
+      "category": "CC2 - Communication and Information",
+      "subcategory": "Information Quality"
+    },
+    {
+      "code": "CC2.2",
+      "name": "COSO Principle 14: Internal Communication",
+      "description": "The entity internally communicates information, including objectives and responsibilities for internal control.",
+      "category": "CC2 - Communication and Information",
+      "subcategory": "Internal Communication"
+    },
+    {
+      "code": "CC2.3",
+      "name": "COSO Principle 15: External Communication",
+      "description": "The entity communicates with external parties regarding matters affecting the functioning of internal control.",
+      "category": "CC2 - Communication and Information",
+      "subcategory": "External Communication"
+    },
+    {
+      "code": "CC3.1",
+      "name": "COSO Principle 6: Risk Objectives",
+      "description": "The entity specifies objectives with sufficient clarity to enable the identification and assessment of risks.",
+      "category": "CC3 - Risk Assessment",
+      "subcategory": "Objectives"
+    },
+    {
+      "code": "CC3.2",
+      "name": "COSO Principle 7: Risk Identification and Analysis",
+      "description": "The entity identifies risks to the achievement of its objectives and analyzes risks to determine how risks should be managed.",
+      "category": "CC3 - Risk Assessment",
+      "subcategory": "Risk Analysis"
+    },
+    {
+      "code": "CC3.3",
+      "name": "COSO Principle 8: Fraud Risk",
+      "description": "The entity considers the potential for fraud in assessing risks to the achievement of objectives.",
+      "category": "CC3 - Risk Assessment",
+      "subcategory": "Fraud Assessment"
+    },
+    {
+      "code": "CC3.4",
+      "name": "COSO Principle 9: Change Management Risk",
+      "description": "The entity identifies and assesses changes that could significantly impact the system of internal control.",
+      "category": "CC3 - Risk Assessment",
+      "subcategory": "Change Assessment"
+    },
+    {
+      "code": "CC4.1",
+      "name": "COSO Principle 16: Ongoing and Separate Evaluations",
+      "description": "The entity selects, develops, and performs ongoing and/or separate evaluations to ascertain whether controls are present and functioning.",
+      "category": "CC4 - Monitoring Activities",
+      "subcategory": "Control Evaluation"
+    },
+    {
+      "code": "CC4.2",
+      "name": "COSO Principle 17: Communication of Deficiencies",
+      "description": "The entity evaluates and communicates internal control deficiencies in a timely manner.",
+      "category": "CC4 - Monitoring Activities",
+      "subcategory": "Deficiency Reporting"
+    },
+    {
+      "code": "CC5.1",
+      "name": "COSO Principle 10: Control Activity Selection",
+      "description": "The entity selects and develops control activities that contribute to the mitigation of risks.",
+      "category": "CC5 - Control Activities",
+      "subcategory": "Control Selection"
+    },
+    {
+      "code": "CC5.2",
+      "name": "COSO Principle 11: Technology General Controls",
+      "description": "The entity selects and develops general control activities over technology to support the achievement of objectives.",
+      "category": "CC5 - Control Activities",
+      "subcategory": "IT General Controls"
+    },
+    {
+      "code": "CC5.3",
+      "name": "COSO Principle 12: Control Deployment through Policies",
+      "description": "The entity deploys control activities through policies that establish expectations and procedures.",
+      "category": "CC5 - Control Activities",
+      "subcategory": "Policies and Procedures"
+    },
+    {
+      "code": "CC6.1",
+      "name": "Logical and Physical Access - Security Software",
+      "description": "The entity implements logical access security software, infrastructure, and architectures to protect information assets.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Access Control Infrastructure"
+    },
+    {
+      "code": "CC6.2",
+      "name": "Logical and Physical Access - User Registration",
+      "description": "Prior to issuing system credentials, the entity registers and authorizes new users.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "User Provisioning"
+    },
+    {
+      "code": "CC6.3",
+      "name": "Logical and Physical Access - User Removal",
+      "description": "The entity authorizes, modifies, or removes access based on roles, responsibilities, or the system use.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Access Modification"
+    },
+    {
+      "code": "CC6.4",
+      "name": "Logical and Physical Access - Physical Access Restrictions",
+      "description": "The entity restricts physical access to facilities and protected information assets.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Physical Security"
+    },
+    {
+      "code": "CC6.5",
+      "name": "Logical and Physical Access - Asset Disposal",
+      "description": "The entity discontinues logical and physical protections over assets only after their ability to protect data is no longer needed.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Asset Disposal"
+    },
+    {
+      "code": "CC6.6",
+      "name": "Logical and Physical Access - External Threats",
+      "description": "The entity implements controls to prevent or detect and act upon unauthorized logical access or physical access.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Threat Prevention"
+    },
+    {
+      "code": "CC6.7",
+      "name": "Logical and Physical Access - Data Transmission",
+      "description": "The entity restricts the transmission, movement, and removal of information to authorized parties.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Data Transfer"
+    },
+    {
+      "code": "CC6.8",
+      "name": "Logical and Physical Access - Malware Prevention",
+      "description": "The entity implements controls to prevent or detect and act upon the introduction of malicious software.",
+      "category": "CC6 - Logical and Physical Access",
+      "subcategory": "Malware Protection"
+    },
+    {
+      "code": "CC7.1",
+      "name": "System Operations - Configuration Management",
+      "description": "To meet its objectives, the entity uses detection and monitoring procedures to identify changes to configurations.",
+      "category": "CC7 - System Operations",
+      "subcategory": "Configuration Monitoring"
+    },
+    {
+      "code": "CC7.2",
+      "name": "System Operations - Security Event Monitoring",
+      "description": "The entity monitors system components and the operation of those components for anomalies and security events.",
+      "category": "CC7 - System Operations",
+      "subcategory": "Security Monitoring"
+    },
+    {
+      "code": "CC7.3",
+      "name": "System Operations - Event Evaluation",
+      "description": "The entity evaluates security events to determine whether they could or have resulted in a breach.",
+      "category": "CC7 - System Operations",
+      "subcategory": "Event Analysis"
+    },
+    {
+      "code": "CC7.4",
+      "name": "System Operations - Incident Response",
+      "description": "The entity responds to identified security incidents by executing a defined incident response program.",
+      "category": "CC7 - System Operations",
+      "subcategory": "Incident Response"
+    },
+    {
+      "code": "CC7.5",
+      "name": "System Operations - Incident Recovery",
+      "description": "The entity identifies, develops, and implements activities to recover from identified security incidents.",
+      "category": "CC7 - System Operations",
+      "subcategory": "Recovery"
+    },
+    {
+      "code": "CC8.1",
+      "name": "Change Management - Infrastructure and Software Changes",
+      "description": "The entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes to infrastructure and software.",
+      "category": "CC8 - Change Management",
+      "subcategory": "Change Process"
+    },
+    {
+      "code": "CC9.1",
+      "name": "Risk Mitigation - Business Disruption",
+      "description": "The entity identifies, selects, and develops risk mitigation activities for risks arising from potential business disruptions.",
+      "category": "CC9 - Risk Mitigation",
+      "subcategory": "Business Continuity"
+    },
+    {
+      "code": "CC9.2",
+      "name": "Risk Mitigation - Vendor Risk Management",
+      "description": "The entity assesses and manages risks associated with vendors and business partners.",
+      "category": "CC9 - Risk Mitigation",
+      "subcategory": "Vendor Management"
+    },
+    {
+      "code": "A1.1",
+      "name": "Availability - Capacity Management",
+      "description": "The entity maintains, monitors, and evaluates current processing capacity and use to meet availability commitments.",
+      "category": "Availability",
+      "subcategory": "Capacity"
+    },
+    {
+      "code": "A1.2",
+      "name": "Availability - Environmental Protections",
+      "description": "The entity authorizes, designs, and implements environmental protections, software, and data backup processes.",
+      "category": "Availability",
+      "subcategory": "Environmental Controls"
+    },
+    {
+      "code": "A1.3",
+      "name": "Availability - Recovery Testing",
+      "description": "The entity tests recovery plan procedures supporting system recovery to meet its availability commitments.",
+      "category": "Availability",
+      "subcategory": "Recovery Testing"
+    },
+    {
+      "code": "PI1.1",
+      "name": "Processing Integrity - Data Quality",
+      "description": "The entity implements policies and procedures over system inputs to ensure they are complete, accurate, and timely.",
+      "category": "Processing Integrity",
+      "subcategory": "Input Controls"
+    },
+    {
+      "code": "PI1.2",
+      "name": "Processing Integrity - Processing Accuracy",
+      "description": "The entity implements policies and procedures over system processing to ensure processing is complete, accurate, and timely.",
+      "category": "Processing Integrity",
+      "subcategory": "Processing Controls"
+    },
+    {
+      "code": "PI1.3",
+      "name": "Processing Integrity - Output Completeness",
+      "description": "The entity implements policies and procedures to ensure system outputs are complete, accurate, and distributed only to intended recipients.",
+      "category": "Processing Integrity",
+      "subcategory": "Output Controls"
+    },
+    {
+      "code": "PI1.4",
+      "name": "Processing Integrity - Error Handling",
+      "description": "The entity implements policies and procedures to detect, record, and resolve processing errors in a timely manner.",
+      "category": "Processing Integrity",
+      "subcategory": "Error Management"
+    },
+    {
+      "code": "PI1.5",
+      "name": "Processing Integrity - Data Retention",
+      "description": "The entity implements policies and procedures to store inputs, items in processing, and outputs completely and accurately.",
+      "category": "Processing Integrity",
+      "subcategory": "Data Storage"
+    },
+    {
+      "code": "C1.1",
+      "name": "Confidentiality - Identification",
+      "description": "The entity identifies and maintains confidential information to meet the entity's objectives related to confidentiality.",
+      "category": "Confidentiality",
+      "subcategory": "Data Classification"
+    },
+    {
+      "code": "C1.2",
+      "name": "Confidentiality - Disposal",
+      "description": "The entity disposes of confidential information to meet the entity's objectives related to confidentiality.",
+      "category": "Confidentiality",
+      "subcategory": "Data Disposal"
+    },
+    {
+      "code": "P1.1",
+      "name": "Privacy - Notice",
+      "description": "The entity provides notice to data subjects about its privacy practices to meet its privacy commitments.",
+      "category": "Privacy",
+      "subcategory": "Privacy Notice"
+    },
+    {
+      "code": "P2.1",
+      "name": "Privacy - Choice and Consent",
+      "description": "The entity communicates choices available regarding the collection, use, and disclosure of personal information.",
+      "category": "Privacy",
+      "subcategory": "Consent"
+    },
+    {
+      "code": "P3.1",
+      "name": "Privacy - Collection",
+      "description": "The entity collects personal information consistent with the entity's privacy commitments and objectives.",
+      "category": "Privacy",
+      "subcategory": "Data Collection"
+    },
+    {
+      "code": "P3.2",
+      "name": "Privacy - Explicit Consent",
+      "description": "For information requiring explicit consent, the entity communicates the need for such consent and the consequences of denial.",
+      "category": "Privacy",
+      "subcategory": "Explicit Consent"
+    },
+    {
+      "code": "P4.1",
+      "name": "Privacy - Use and Retention",
+      "description": "The entity limits the use of personal information to the purposes identified and for which consent was obtained.",
+      "category": "Privacy",
+      "subcategory": "Purpose Limitation"
+    },
+    {
+      "code": "P4.2",
+      "name": "Privacy - Retention Period",
+      "description": "The entity retains personal information consistent with the entity's objectives related to privacy.",
+      "category": "Privacy",
+      "subcategory": "Retention"
+    },
+    {
+      "code": "P4.3",
+      "name": "Privacy - Secure Disposal",
+      "description": "The entity securely disposes of personal information to meet the entity's objectives related to privacy.",
+      "category": "Privacy",
+      "subcategory": "Disposal"
+    },
+    {
+      "code": "P5.1",
+      "name": "Privacy - Access",
+      "description": "The entity grants identified and authenticated data subjects the ability to access their stored personal information.",
+      "category": "Privacy",
+      "subcategory": "Data Subject Access"
+    },
+    {
+      "code": "P5.2",
+      "name": "Privacy - Correction",
+      "description": "The entity corrects, amends, or appends personal information based on information provided by data subjects.",
+      "category": "Privacy",
+      "subcategory": "Data Correction"
+    },
+    {
+      "code": "P6.1",
+      "name": "Privacy - Disclosure to Third Parties",
+      "description": "The entity discloses personal information to third parties only for purposes identified in the privacy notice.",
+      "category": "Privacy",
+      "subcategory": "Third Party Disclosure"
+    },
+    {
+      "code": "P6.2",
+      "name": "Privacy - Third Party Notification",
+      "description": "The entity notifies third parties who have received personal information from the entity of changes or data subject requests.",
+      "category": "Privacy",
+      "subcategory": "Third Party Updates"
+    },
+    {
+      "code": "P6.3",
+      "name": "Privacy - New Purposes and Uses",
+      "description": "The entity creates and retains a record of authorized disclosures of personal information.",
+      "category": "Privacy",
+      "subcategory": "Disclosure Records"
+    },
+    {
+      "code": "P6.4",
+      "name": "Privacy - Misuse by Third Parties",
+      "description": "The entity obtains commitments from third parties that they will comply with privacy requirements.",
+      "category": "Privacy",
+      "subcategory": "Third Party Compliance"
+    },
+    {
+      "code": "P6.5",
+      "name": "Privacy - Third Party Compliance",
+      "description": "The entity obtains assurances that third parties comply with privacy requirements through contractual agreements.",
+      "category": "Privacy",
+      "subcategory": "Vendor Agreements"
+    },
+    {
+      "code": "P6.6",
+      "name": "Privacy - Notification of Disclosure",
+      "description": "The entity provides notification to affected data subjects of authorized disclosures of personal information.",
+      "category": "Privacy",
+      "subcategory": "Disclosure Notification"
+    },
+    {
+      "code": "P6.7",
+      "name": "Privacy - Unauthorized Disclosure",
+      "description": "The entity provides notification to affected data subjects, regulators, and others regarding unauthorized access.",
+      "category": "Privacy",
+      "subcategory": "Breach Notification"
+    },
+    {
+      "code": "P7.1",
+      "name": "Privacy - Data Quality",
+      "description": "The entity collects and maintains accurate, up-to-date, complete, and relevant personal information.",
+      "category": "Privacy",
+      "subcategory": "Data Quality"
+    },
+    {
+      "code": "P8.1",
+      "name": "Privacy - Complaint Management",
+      "description": "The entity implements a process for receiving, addressing, resolving, and communicating complaints regarding privacy.",
+      "category": "Privacy",
+      "subcategory": "Complaints"
+    }
+  ]
+}

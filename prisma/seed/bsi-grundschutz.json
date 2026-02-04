@@ -1,0 +1,787 @@
+{
+  "standard": {
+    "name": "BSI IT-Grundschutz Kompendium",
+    "shortName": "BSI",
+    "version": "2023",
+    "description": "Das IT-Grundschutz-Kompendium des Bundesamts für Sicherheit in der Informationstechnik (BSI) enthält die IT-Grundschutz-Bausteine, in denen jeweils Gefährdungen und Sicherheitsanforderungen zu einem bestimmten Thema beschrieben sind."
+  },
+  "controls": [
+    {
+      "code": "ISMS.1",
+      "name": "Sicherheitsmanagement",
+      "description": "Dieser Baustein beschreibt die Anforderungen an ein Informationssicherheitsmanagementsystem (ISMS) und die Aufgaben des Sicherheitsmanagements.",
+      "category": "ISMS",
+      "subcategory": "Sicherheitsmanagement"
+    },
+    {
+      "code": "ORP.1",
+      "name": "Organisation",
+      "description": "Dieser Baustein behandelt die organisatorischen Anforderungen an die Informationssicherheit, einschliesslich Verantwortlichkeiten und Regelungen.",
+      "category": "ORP",
+      "subcategory": "Organisation und Personal"
+    },
+    {
+      "code": "ORP.2",
+      "name": "Personal",
+      "description": "Dieser Baustein beschreibt die personellen Sicherheitsanforderungen, einschliesslich Einstellung, Schulung und Beendigung von Arbeitsverhältnissen.",
+      "category": "ORP",
+      "subcategory": "Organisation und Personal"
+    },
+    {
+      "code": "ORP.3",
+      "name": "Sensibilisierung und Schulung zur Informationssicherheit",
+      "description": "Dieser Baustein behandelt die Anforderungen an Awareness-Programme und Schulungsmassnahmen zur Informationssicherheit.",
+      "category": "ORP",
+      "subcategory": "Organisation und Personal"
+    },
+    {
+      "code": "ORP.4",
+      "name": "Identitäts- und Berechtigungsmanagement",
+      "description": "Dieser Baustein beschreibt die Anforderungen an das Management von Identitäten und Zugriffsrechten.",
+      "category": "ORP",
+      "subcategory": "Organisation und Personal"
+    },
+    {
+      "code": "ORP.5",
+      "name": "Compliance Management (Anforderungsmanagement)",
+      "description": "Dieser Baustein behandelt die Einhaltung von rechtlichen, vertraglichen und organisatorischen Anforderungen.",
+      "category": "ORP",
+      "subcategory": "Organisation und Personal"
+    },
+    {
+      "code": "CON.1",
+      "name": "Kryptokonzept",
+      "description": "Dieser Baustein beschreibt die Anforderungen an den Einsatz kryptographischer Verfahren zum Schutz von Informationen.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.2",
+      "name": "Datenschutz",
+      "description": "Dieser Baustein behandelt die Anforderungen an den Schutz personenbezogener Daten gemäss DSGVO und BDSG.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.3",
+      "name": "Datensicherungskonzept",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die Sicherung von Daten, einschliesslich Backup-Strategien und -Verfahren.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.6",
+      "name": "Löschen und Vernichten",
+      "description": "Dieser Baustein behandelt die sichere Löschung und Vernichtung von Daten und Datenträgern.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.7",
+      "name": "Informationssicherheit auf Auslandsreisen",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für die Nutzung von IT auf Auslandsreisen.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.8",
+      "name": "Software-Entwicklung",
+      "description": "Dieser Baustein behandelt die Anforderungen an die sichere Software-Entwicklung.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.9",
+      "name": "Informationsaustausch",
+      "description": "Dieser Baustein beschreibt die Anforderungen an den sicheren Austausch von Informationen.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.10",
+      "name": "Entwicklung von Webanwendungen",
+      "description": "Dieser Baustein behandelt die spezifischen Anforderungen an die sichere Entwicklung von Webanwendungen.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "CON.11.1",
+      "name": "Geheimschutz VS-NUR FÜR DEN DIENSTGEBRAUCH (VS-NfD)",
+      "description": "Dieser Baustein beschreibt die Anforderungen an den Umgang mit Verschlusssachen der Stufe VS-NfD.",
+      "category": "CON",
+      "subcategory": "Konzeption und Vorgehensweise"
+    },
+    {
+      "code": "OPS.1.1.1",
+      "name": "Allgemeiner IT-Betrieb",
+      "description": "Dieser Baustein behandelt die grundlegenden Anforderungen an den IT-Betrieb.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.2",
+      "name": "Ordnungsgemässe IT-Administration",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die Administration von IT-Systemen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.3",
+      "name": "Patch- und Änderungsmanagement",
+      "description": "Dieser Baustein behandelt die Anforderungen an das Management von Patches und Änderungen an IT-Systemen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.4",
+      "name": "Schutz vor Schadprogrammen",
+      "description": "Dieser Baustein beschreibt die Anforderungen an den Schutz vor Malware und anderen Schadprogrammen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.5",
+      "name": "Protokollierung",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Protokollierung von sicherheitsrelevanten Ereignissen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.6",
+      "name": "Software-Tests und -Freigaben",
+      "description": "Dieser Baustein beschreibt die Anforderungen an das Testen und Freigeben von Software.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.1.7",
+      "name": "Systemmanagement",
+      "description": "Dieser Baustein behandelt die Anforderungen an das zentrale Management von IT-Systemen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.2.2",
+      "name": "Archivierung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die langfristige Aufbewahrung von Daten.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.2.4",
+      "name": "Telearbeit",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Telearbeit und mobiles Arbeiten.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.2.5",
+      "name": "Fernwartung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die sichere Fernwartung von IT-Systemen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.1.2.6",
+      "name": "NTP-Zeitsynchronisation",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Zeitsynchronisation in IT-Systemen.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.2.2",
+      "name": "Cloud-Nutzung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die sichere Nutzung von Cloud-Diensten.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.2.3",
+      "name": "Nutzung von Outsourcing",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen bei der Auslagerung von IT-Diensten.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "OPS.3.2",
+      "name": "Anbieten von Outsourcing",
+      "description": "Dieser Baustein beschreibt die Anforderungen für Anbieter von Outsourcing-Diensten.",
+      "category": "OPS",
+      "subcategory": "Betrieb"
+    },
+    {
+      "code": "DER.1",
+      "name": "Detektion von sicherheitsrelevanten Ereignissen",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Erkennung von Sicherheitsvorfällen.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.2.1",
+      "name": "Behandlung von Sicherheitsvorfällen",
+      "description": "Dieser Baustein beschreibt die Anforderungen an das Incident-Management.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.2.2",
+      "name": "Vorsorge für die IT-Forensik",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Vorbereitung forensischer Untersuchungen.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.2.3",
+      "name": "Bereinigung weitreichender Sicherheitsvorfälle",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die Bereinigung nach grösseren Sicherheitsvorfällen.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.3.1",
+      "name": "Audits und Revisionen",
+      "description": "Dieser Baustein behandelt die Anforderungen an interne und externe Audits.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.3.2",
+      "name": "Revisionen auf Basis des Leitfadens IS-Revision",
+      "description": "Dieser Baustein beschreibt die Anforderungen an IS-Revisionen nach BSI-Leitfaden.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "DER.4",
+      "name": "Notfallmanagement",
+      "description": "Dieser Baustein behandelt die Anforderungen an das Business Continuity Management.",
+      "category": "DER",
+      "subcategory": "Detektion und Reaktion"
+    },
+    {
+      "code": "APP.1.1",
+      "name": "Office-Produkte",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Office-Anwendungen.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.1.2",
+      "name": "Webbrowser",
+      "description": "Dieser Baustein behandelt die Anforderungen an die sichere Nutzung von Webbrowsern.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.1.4",
+      "name": "Mobile Anwendungen (Apps)",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für mobile Anwendungen.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.2.1",
+      "name": "Allgemeiner Verzeichnisdienst",
+      "description": "Dieser Baustein behandelt die Anforderungen an Verzeichnisdienste.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.2.2",
+      "name": "Active Directory Domain Services",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Microsoft Active Directory.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.2.3",
+      "name": "OpenLDAP",
+      "description": "Dieser Baustein behandelt die Anforderungen an OpenLDAP-Verzeichnisdienste.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.3.1",
+      "name": "Webanwendungen und Webservices",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Webanwendungen und APIs.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.3.2",
+      "name": "Webserver",
+      "description": "Dieser Baustein behandelt die Anforderungen an die sichere Konfiguration von Webservern.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.3.3",
+      "name": "Fileserver",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Dateiserver.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.3.4",
+      "name": "Samba",
+      "description": "Dieser Baustein behandelt die Anforderungen an Samba-Server.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.3.6",
+      "name": "DNS-Server",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für DNS-Server.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.4.2",
+      "name": "SAP-ERP-System",
+      "description": "Dieser Baustein behandelt die spezifischen Anforderungen an SAP-Systeme.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.4.3",
+      "name": "Relationale Datenbanken",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für relationale Datenbankmanagementsysteme.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.4.4",
+      "name": "Kubernetes",
+      "description": "Dieser Baustein behandelt die Anforderungen an Container-Orchestrierung mit Kubernetes.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.4.6",
+      "name": "SAP ABAP-Programmierung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die sichere ABAP-Entwicklung.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.5.2",
+      "name": "Microsoft Exchange und Outlook",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Microsoft Exchange.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.5.3",
+      "name": "Allgemeiner E-Mail-Client und -Server",
+      "description": "Dieser Baustein beschreibt die allgemeinen Anforderungen an E-Mail-Systeme.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.5.4",
+      "name": "Unified Communications und Collaboration (UCC)",
+      "description": "Dieser Baustein behandelt die Anforderungen an UCC-Systeme wie Teams oder Zoom.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.6",
+      "name": "Allgemeine Software",
+      "description": "Dieser Baustein beschreibt die allgemeinen Sicherheitsanforderungen für Software.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "APP.7",
+      "name": "Entwicklung von Individualsoftware",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Entwicklung individueller Software.",
+      "category": "APP",
+      "subcategory": "Anwendungen"
+    },
+    {
+      "code": "SYS.1.1",
+      "name": "Allgemeiner Server",
+      "description": "Dieser Baustein beschreibt die allgemeinen Sicherheitsanforderungen für Server.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.2.2",
+      "name": "Windows Server 2012",
+      "description": "Dieser Baustein behandelt die spezifischen Anforderungen für Windows Server 2012.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.2.3",
+      "name": "Windows Server",
+      "description": "Dieser Baustein beschreibt die Anforderungen für aktuelle Windows Server Versionen.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.3",
+      "name": "Server unter Linux und Unix",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Linux- und Unix-Server.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.5",
+      "name": "Virtualisierung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an virtualisierte IT-Umgebungen.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.6",
+      "name": "Containerisierung",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Container-Technologien.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.7",
+      "name": "IBM Z",
+      "description": "Dieser Baustein beschreibt die spezifischen Anforderungen für IBM Mainframe-Systeme.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.8",
+      "name": "Speicherlösungen",
+      "description": "Dieser Baustein behandelt die Anforderungen an Storage-Systeme wie SAN und NAS.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.1.9",
+      "name": "Terminalserver",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Terminalserver.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.1",
+      "name": "Allgemeiner Client",
+      "description": "Dieser Baustein behandelt die allgemeinen Anforderungen an Client-Systeme.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.2.3",
+      "name": "Clients unter Windows",
+      "description": "Dieser Baustein beschreibt die spezifischen Anforderungen für Windows-Clients.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.3",
+      "name": "Clients unter Linux und Unix",
+      "description": "Dieser Baustein behandelt die Anforderungen für Linux- und Unix-Clients.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.4",
+      "name": "Clients unter macOS",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für macOS-Clients.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.5",
+      "name": "Client-Virtualisierung",
+      "description": "Dieser Baustein behandelt die Anforderungen an virtualisierte Client-Umgebungen.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.2.6",
+      "name": "Virtual Desktop Infrastructure",
+      "description": "Dieser Baustein beschreibt die Anforderungen an VDI-Umgebungen.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.1",
+      "name": "Laptops",
+      "description": "Dieser Baustein behandelt die spezifischen Anforderungen für Notebooks.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.2.1",
+      "name": "Allgemeine Smartphones und Tablets",
+      "description": "Dieser Baustein beschreibt die allgemeinen Anforderungen an mobile Geräte.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.2.2",
+      "name": "Mobile Device Management (MDM)",
+      "description": "Dieser Baustein behandelt die Anforderungen an das Management mobiler Geräte.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.2.3",
+      "name": "iOS (for Enterprise)",
+      "description": "Dieser Baustein beschreibt die spezifischen Anforderungen für iOS-Geräte im Unternehmenseinsatz.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.2.4",
+      "name": "Android",
+      "description": "Dieser Baustein behandelt die Anforderungen für Android-Geräte.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.3.3",
+      "name": "Mobiltelefon",
+      "description": "Dieser Baustein beschreibt die Anforderungen an klassische Mobiltelefone.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.4.1",
+      "name": "Drucker, Kopierer und Multifunktionsgeräte",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Drucksysteme.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.4.3",
+      "name": "Eingebettete Systeme",
+      "description": "Dieser Baustein beschreibt die Anforderungen an Embedded Systems.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.4.4",
+      "name": "Allgemeines IoT-Gerät",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für IoT-Geräte.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "SYS.4.5",
+      "name": "Wechseldatenträger",
+      "description": "Dieser Baustein beschreibt die Anforderungen an USB-Sticks und andere Wechselmedien.",
+      "category": "SYS",
+      "subcategory": "IT-Systeme"
+    },
+    {
+      "code": "IND.1",
+      "name": "Prozessleit- und Automatisierungstechnik",
+      "description": "Dieser Baustein behandelt die übergreifenden Anforderungen an industrielle Steuerungssysteme.",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.2.1",
+      "name": "Allgemeine ICS-Komponente",
+      "description": "Dieser Baustein beschreibt die allgemeinen Anforderungen an ICS-Komponenten.",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.2.2",
+      "name": "Speicherprogrammierbare Steuerung (SPS)",
+      "description": "Dieser Baustein behandelt die Anforderungen an Programmable Logic Controller (PLC).",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.2.3",
+      "name": "Sensoren und Aktoren",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für industrielle Sensoren und Aktoren.",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.2.4",
+      "name": "Maschine",
+      "description": "Dieser Baustein behandelt die Anforderungen an vernetzte Maschinen.",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.2.7",
+      "name": "Safety Instrumented Systems",
+      "description": "Dieser Baustein beschreibt die Anforderungen an sicherheitsgerichtete Systeme (SIS).",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "IND.3.2",
+      "name": "Fernwartung im industriellen Umfeld",
+      "description": "Dieser Baustein behandelt die Anforderungen an die Fernwartung von Industrieanlagen.",
+      "category": "IND",
+      "subcategory": "Industrielle IT"
+    },
+    {
+      "code": "NET.1.1",
+      "name": "Netzarchitektur und -design",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die Planung und Gestaltung von Netzwerken.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.1.2",
+      "name": "Netzmanagement",
+      "description": "Dieser Baustein behandelt die Anforderungen an das Management von Netzwerkinfrastrukturen.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.2.1",
+      "name": "WLAN-Betrieb",
+      "description": "Dieser Baustein beschreibt die Anforderungen an den Betrieb von WLAN-Infrastrukturen.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.2.2",
+      "name": "WLAN-Nutzung",
+      "description": "Dieser Baustein behandelt die Anforderungen an die sichere Nutzung von WLAN.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.3.1",
+      "name": "Router und Switches",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Netzwerkkomponenten.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.3.2",
+      "name": "Firewall",
+      "description": "Dieser Baustein behandelt die Anforderungen an Firewalls und deren Konfiguration.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.3.3",
+      "name": "VPN",
+      "description": "Dieser Baustein beschreibt die Anforderungen an Virtual Private Networks.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.3.4",
+      "name": "Network Access Control (NAC)",
+      "description": "Dieser Baustein behandelt die Anforderungen an Netzwerkzugangskontrolle.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.4.1",
+      "name": "TK-Anlagen",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Telefonanlagen.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.4.2",
+      "name": "VoIP",
+      "description": "Dieser Baustein behandelt die Anforderungen an Voice over IP-Systeme.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "NET.4.3",
+      "name": "Faxgeräte und Faxserver",
+      "description": "Dieser Baustein beschreibt die Anforderungen an Fax-Infrastrukturen.",
+      "category": "NET",
+      "subcategory": "Netze und Kommunikation"
+    },
+    {
+      "code": "INF.1",
+      "name": "Allgemeines Gebäude",
+      "description": "Dieser Baustein behandelt die physischen Sicherheitsanforderungen an Gebäude.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.2",
+      "name": "Rechenzentrum sowie Serverraum",
+      "description": "Dieser Baustein beschreibt die Anforderungen an Rechenzentren und Serverräume.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.5",
+      "name": "Raum sowie Schrank für technische Infrastruktur",
+      "description": "Dieser Baustein behandelt die Anforderungen an Technikräume und -schränke.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.6",
+      "name": "Datenträgerarchiv",
+      "description": "Dieser Baustein beschreibt die Anforderungen an die Aufbewahrung von Datenträgern.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.7",
+      "name": "Büroarbeitsplatz",
+      "description": "Dieser Baustein behandelt die Sicherheitsanforderungen für Büroarbeitsplätze.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.8",
+      "name": "Häuslicher Arbeitsplatz",
+      "description": "Dieser Baustein beschreibt die Anforderungen an Home-Office-Arbeitsplätze.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.9",
+      "name": "Mobiler Arbeitsplatz",
+      "description": "Dieser Baustein behandelt die Anforderungen an mobiles Arbeiten unterwegs.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.10",
+      "name": "Besprechungs-, Veranstaltungs- und Schulungsräume",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Veranstaltungsräume.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.11",
+      "name": "Allgemeines Fahrzeug",
+      "description": "Dieser Baustein behandelt die Anforderungen an IT in Fahrzeugen.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.12",
+      "name": "Verkabelung",
+      "description": "Dieser Baustein beschreibt die Anforderungen an IT- und Netzwerkverkabelung.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.13",
+      "name": "Technisches Gebäudemanagement",
+      "description": "Dieser Baustein behandelt die Anforderungen an Building Management Systems.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    },
+    {
+      "code": "INF.14",
+      "name": "Gebäudeautomation",
+      "description": "Dieser Baustein beschreibt die Sicherheitsanforderungen für Gebäudeautomationssysteme.",
+      "category": "INF",
+      "subcategory": "Infrastruktur"
+    }
+  ]
+}

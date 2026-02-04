@@ -1,0 +1,367 @@
+{
+  "standard": {
+    "name": "IKT-Grundschutz des Bundes (Schweiz)",
+    "shortName": "CH-IKT",
+    "version": "5.1",
+    "description": "Der IKT-Grundschutz legt die minimalen organisatorischen, personellen und technischen Sicherheitsvorgaben im Bereich Informatiksicherheit für die Bundesverwaltung der Schweiz verbindlich fest (Si001)."
+  },
+  "controls": [
+    {
+      "code": "O.1",
+      "name": "Informationssicherheitspolitik",
+      "description": "Die Organisation verfügt über eine dokumentierte Informationssicherheitspolitik, die von der Geschäftsleitung genehmigt und kommuniziert wird.",
+      "category": "Organisation",
+      "subcategory": "Governance"
+    },
+    {
+      "code": "O.2",
+      "name": "Informationssicherheitsorganisation",
+      "description": "Eine klare Organisationsstruktur für die Informationssicherheit ist definiert, mit eindeutigen Rollen und Verantwortlichkeiten.",
+      "category": "Organisation",
+      "subcategory": "Governance"
+    },
+    {
+      "code": "O.3",
+      "name": "Risikomanagement",
+      "description": "Ein systematischer Risikomanagementprozess für Informationssicherheit ist etabliert und wird regelmässig durchgeführt.",
+      "category": "Organisation",
+      "subcategory": "Governance"
+    },
+    {
+      "code": "O.4",
+      "name": "Dokumentation und Aufzeichnungen",
+      "description": "Sicherheitsrelevante Dokumentationen werden erstellt, gepflegt und gemäss definierten Aufbewahrungsfristen archiviert.",
+      "category": "Organisation",
+      "subcategory": "Governance"
+    },
+    {
+      "code": "O.5",
+      "name": "Compliance und rechtliche Anforderungen",
+      "description": "Gesetzliche, regulatorische und vertragliche Anforderungen an die Informationssicherheit werden identifiziert und eingehalten.",
+      "category": "Organisation",
+      "subcategory": "Governance"
+    },
+    {
+      "code": "O.6",
+      "name": "Lieferantenmanagement",
+      "description": "Sicherheitsanforderungen an Lieferanten und Dienstleister werden definiert und deren Einhaltung überwacht.",
+      "category": "Organisation",
+      "subcategory": "Externe Beziehungen"
+    },
+    {
+      "code": "O.7",
+      "name": "Notfall- und Krisenmanagement",
+      "description": "Notfallpläne und Krisenmanagementprozesse sind dokumentiert und werden regelmässig getestet.",
+      "category": "Organisation",
+      "subcategory": "Business Continuity"
+    },
+    {
+      "code": "O.8",
+      "name": "Sicherheitsvorfallmanagement",
+      "description": "Prozesse zur Erkennung, Meldung und Behandlung von Sicherheitsvorfällen sind etabliert.",
+      "category": "Organisation",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "O.9",
+      "name": "Änderungsmanagement",
+      "description": "Änderungen an IT-Systemen und -Prozessen werden kontrolliert geplant, genehmigt und dokumentiert.",
+      "category": "Organisation",
+      "subcategory": "Change Management"
+    },
+    {
+      "code": "O.10",
+      "name": "Überprüfung und Audit",
+      "description": "Regelmässige Überprüfungen und Audits der Informationssicherheit werden durchgeführt.",
+      "category": "Organisation",
+      "subcategory": "Audit"
+    },
+    {
+      "code": "P.1",
+      "name": "Sicherheitsüberprüfung bei Einstellung",
+      "description": "Vor der Einstellung werden angemessene Hintergrundüberprüfungen durchgeführt.",
+      "category": "Personal",
+      "subcategory": "Einstellung"
+    },
+    {
+      "code": "P.2",
+      "name": "Arbeitsverträge und Vertraulichkeit",
+      "description": "Arbeitsverträge enthalten Klauseln zur Informationssicherheit und Vertraulichkeit.",
+      "category": "Personal",
+      "subcategory": "Einstellung"
+    },
+    {
+      "code": "P.3",
+      "name": "Sensibilisierung und Schulung",
+      "description": "Alle Mitarbeitenden werden regelmässig zu Informationssicherheit geschult und sensibilisiert.",
+      "category": "Personal",
+      "subcategory": "Awareness"
+    },
+    {
+      "code": "P.4",
+      "name": "Disziplinarverfahren",
+      "description": "Ein formales Disziplinarverfahren für Sicherheitsverstösse ist definiert.",
+      "category": "Personal",
+      "subcategory": "Compliance"
+    },
+    {
+      "code": "P.5",
+      "name": "Beendigung des Arbeitsverhältnisses",
+      "description": "Bei Beendigung des Arbeitsverhältnisses werden Zugriffsrechte entzogen und Unternehmenseigentum zurückgegeben.",
+      "category": "Personal",
+      "subcategory": "Offboarding"
+    },
+    {
+      "code": "P.6",
+      "name": "Rollenbasierte Verantwortlichkeiten",
+      "description": "Sicherheitsverantwortlichkeiten sind rollenbasiert definiert und kommuniziert.",
+      "category": "Personal",
+      "subcategory": "Rollen"
+    },
+    {
+      "code": "T.1",
+      "name": "Zugriffskontrolle",
+      "description": "Der Zugriff auf Systeme und Daten wird nach dem Prinzip der minimalen Rechte gesteuert.",
+      "category": "Technik",
+      "subcategory": "Zugriffssteuerung"
+    },
+    {
+      "code": "T.2",
+      "name": "Authentifizierung",
+      "description": "Sichere Authentifizierungsmechanismen sind implementiert, inkl. starker Passwörter oder MFA.",
+      "category": "Technik",
+      "subcategory": "Zugriffssteuerung"
+    },
+    {
+      "code": "T.3",
+      "name": "Verschlüsselung",
+      "description": "Sensible Daten werden bei Übertragung und Speicherung verschlüsselt.",
+      "category": "Technik",
+      "subcategory": "Kryptografie"
+    },
+    {
+      "code": "T.4",
+      "name": "Netzwerksicherheit",
+      "description": "Netzwerke sind segmentiert und durch Firewalls und andere Sicherheitsmassnahmen geschützt.",
+      "category": "Technik",
+      "subcategory": "Netzwerk"
+    },
+    {
+      "code": "T.5",
+      "name": "Malwareschutz",
+      "description": "Aktuelle Antiviren- und Antimalware-Lösungen sind auf allen Systemen implementiert.",
+      "category": "Technik",
+      "subcategory": "Endpoint Security"
+    },
+    {
+      "code": "T.6",
+      "name": "Patch-Management",
+      "description": "Sicherheitsupdates werden zeitnah evaluiert und eingespielt.",
+      "category": "Technik",
+      "subcategory": "Systemwartung"
+    },
+    {
+      "code": "T.7",
+      "name": "Datensicherung",
+      "description": "Regelmässige Backups werden durchgeführt und die Wiederherstellung getestet.",
+      "category": "Technik",
+      "subcategory": "Backup"
+    },
+    {
+      "code": "T.8",
+      "name": "Protokollierung und Überwachung",
+      "description": "Sicherheitsrelevante Ereignisse werden protokolliert und überwacht.",
+      "category": "Technik",
+      "subcategory": "Monitoring"
+    },
+    {
+      "code": "T.9",
+      "name": "Sichere Konfiguration",
+      "description": "Systeme werden nach definierten Sicherheitsstandards gehärtet konfiguriert.",
+      "category": "Technik",
+      "subcategory": "Systemhärtung"
+    },
+    {
+      "code": "T.10",
+      "name": "Mobile Geräte",
+      "description": "Mobile Geräte werden zentral verwaltet und entsprechend gesichert.",
+      "category": "Technik",
+      "subcategory": "Mobile Security"
+    },
+    {
+      "code": "I.1",
+      "name": "Informationsklassifizierung",
+      "description": "Informationen werden nach ihrer Schutzbedürftigkeit klassifiziert.",
+      "category": "Information",
+      "subcategory": "Klassifizierung"
+    },
+    {
+      "code": "I.2",
+      "name": "Kennzeichnung von Informationen",
+      "description": "Klassifizierte Informationen werden entsprechend gekennzeichnet.",
+      "category": "Information",
+      "subcategory": "Klassifizierung"
+    },
+    {
+      "code": "I.3",
+      "name": "Handhabung von Informationen",
+      "description": "Regeln für die Handhabung klassifizierter Informationen sind definiert und werden eingehalten.",
+      "category": "Information",
+      "subcategory": "Umgang"
+    },
+    {
+      "code": "I.4",
+      "name": "Informationsaustausch",
+      "description": "Der sichere Austausch von Informationen mit externen Parteien ist geregelt.",
+      "category": "Information",
+      "subcategory": "Transfer"
+    },
+    {
+      "code": "I.5",
+      "name": "Datenschutz",
+      "description": "Personenbezogene Daten werden gemäss DSG und DSGVO geschützt.",
+      "category": "Information",
+      "subcategory": "Privacy"
+    },
+    {
+      "code": "I.6",
+      "name": "Datenaufbewahrung und -löschung",
+      "description": "Aufbewahrungsfristen sind definiert und Daten werden nach Ablauf sicher gelöscht.",
+      "category": "Information",
+      "subcategory": "Lifecycle"
+    },
+    {
+      "code": "S.1",
+      "name": "Server-Sicherheit",
+      "description": "Server werden gemäss Sicherheitsvorgaben konfiguriert und betrieben.",
+      "category": "Systeme",
+      "subcategory": "Server"
+    },
+    {
+      "code": "S.2",
+      "name": "Client-Sicherheit",
+      "description": "Arbeitsplatzrechner werden gemäss Sicherheitsvorgaben konfiguriert und verwaltet.",
+      "category": "Systeme",
+      "subcategory": "Clients"
+    },
+    {
+      "code": "S.3",
+      "name": "Datenbanksicherheit",
+      "description": "Datenbanken werden sicher konfiguriert und der Zugriff kontrolliert.",
+      "category": "Systeme",
+      "subcategory": "Datenbanken"
+    },
+    {
+      "code": "S.4",
+      "name": "Virtualisierung",
+      "description": "Virtualisierte Umgebungen werden sicher konfiguriert und isoliert betrieben.",
+      "category": "Systeme",
+      "subcategory": "Virtualisierung"
+    },
+    {
+      "code": "S.5",
+      "name": "Cloud-Dienste",
+      "description": "Bei der Nutzung von Cloud-Diensten werden die Sicherheitsanforderungen eingehalten.",
+      "category": "Systeme",
+      "subcategory": "Cloud"
+    },
+    {
+      "code": "S.6",
+      "name": "Speichersysteme",
+      "description": "Speichersysteme (SAN, NAS) werden sicher konfiguriert und verwaltet.",
+      "category": "Systeme",
+      "subcategory": "Storage"
+    },
+    {
+      "code": "A.1",
+      "name": "Sichere Softwareentwicklung",
+      "description": "Software wird nach sicheren Entwicklungspraktiken (Secure SDLC) erstellt.",
+      "category": "Anwendungen",
+      "subcategory": "Entwicklung"
+    },
+    {
+      "code": "A.2",
+      "name": "Anwendungssicherheit",
+      "description": "Anwendungen werden auf Sicherheitslücken getestet und gehärtet.",
+      "category": "Anwendungen",
+      "subcategory": "Security Testing"
+    },
+    {
+      "code": "A.3",
+      "name": "Webanwendungen",
+      "description": "Webanwendungen werden gegen OWASP Top 10 und andere Bedrohungen geschützt.",
+      "category": "Anwendungen",
+      "subcategory": "Web Security"
+    },
+    {
+      "code": "A.4",
+      "name": "E-Mail-Sicherheit",
+      "description": "E-Mail-Systeme werden durch Spam-Filter, Verschlüsselung und weitere Massnahmen geschützt.",
+      "category": "Anwendungen",
+      "subcategory": "Messaging"
+    },
+    {
+      "code": "A.5",
+      "name": "Office-Anwendungen",
+      "description": "Office-Anwendungen werden sicher konfiguriert (Makros, externe Inhalte).",
+      "category": "Anwendungen",
+      "subcategory": "Productivity"
+    },
+    {
+      "code": "A.6",
+      "name": "Kollaborationstools",
+      "description": "Kollaborations- und Kommunikationstools werden sicher konfiguriert und betrieben.",
+      "category": "Anwendungen",
+      "subcategory": "Collaboration"
+    },
+    {
+      "code": "Z.1",
+      "name": "Zonenmodell",
+      "description": "IT-Systeme und Netzwerke sind nach dem Zonenmodell des Bundes organisiert.",
+      "category": "Zonen",
+      "subcategory": "Architektur"
+    },
+    {
+      "code": "Z.2",
+      "name": "Internet-Zone",
+      "description": "Systeme in der Internet-Zone werden entsprechend dem erhöhten Risiko geschützt.",
+      "category": "Zonen",
+      "subcategory": "Internet"
+    },
+    {
+      "code": "Z.3",
+      "name": "DMZ",
+      "description": "Die DMZ ist korrekt segmentiert und geschützt.",
+      "category": "Zonen",
+      "subcategory": "DMZ"
+    },
+    {
+      "code": "Z.4",
+      "name": "Intranet-Zone",
+      "description": "Das Intranet ist vom Internet getrennt und entsprechend geschützt.",
+      "category": "Zonen",
+      "subcategory": "Intranet"
+    },
+    {
+      "code": "Z.5",
+      "name": "Vertrauliche Zone",
+      "description": "Hochvertrauliche Systeme werden in einer speziell gesicherten Zone betrieben.",
+      "category": "Zonen",
+      "subcategory": "Hochsicherheit"
+    },
+    {
+      "code": "Z.6",
+      "name": "Zonenübergänge",
+      "description": "Übergänge zwischen Zonen werden kontrolliert und protokolliert.",
+      "category": "Zonen",
+      "subcategory": "Übergänge"
+    },
+    {
+      "code": "Z.7",
+      "name": "Physische Sicherheit",
+      "description": "Rechenzentren und Serverräume sind physisch gesichert (Zutritt, Brandschutz, USV).",
+      "category": "Zonen",
+      "subcategory": "Physisch"
+    }
+  ]
+}

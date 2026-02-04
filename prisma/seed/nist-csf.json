@@ -1,0 +1,675 @@
+{
+  "standard": {
+    "name": "NIST Cybersecurity Framework",
+    "shortName": "NIST-CSF",
+    "version": "2.0",
+    "description": "The NIST Cybersecurity Framework provides a policy framework of computer security guidance for organizations to assess and improve their ability to prevent, detect, and respond to cyber attacks."
+  },
+  "controls": [
+    {
+      "code": "GV.OC-01",
+      "name": "Organizational mission is understood",
+      "description": "The organizational mission is understood and informs cybersecurity risk management.",
+      "category": "GOVERN",
+      "subcategory": "Organizational Context"
+    },
+    {
+      "code": "GV.OC-02",
+      "name": "Internal and external stakeholders are understood",
+      "description": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered.",
+      "category": "GOVERN",
+      "subcategory": "Organizational Context"
+    },
+    {
+      "code": "GV.OC-03",
+      "name": "Legal and regulatory requirements are understood",
+      "description": "Legal, regulatory, and contractual requirements regarding cybersecurity – including privacy and civil liberties obligations – are understood and managed.",
+      "category": "GOVERN",
+      "subcategory": "Organizational Context"
+    },
+    {
+      "code": "GV.OC-04",
+      "name": "Critical objectives and dependencies are understood",
+      "description": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated.",
+      "category": "GOVERN",
+      "subcategory": "Organizational Context"
+    },
+    {
+      "code": "GV.OC-05",
+      "name": "Outcomes and priorities are established",
+      "description": "Outcomes, capabilities, and services that the organization depends on are understood and communicated.",
+      "category": "GOVERN",
+      "subcategory": "Organizational Context"
+    },
+    {
+      "code": "GV.RM-01",
+      "name": "Risk management objectives are established",
+      "description": "Risk management objectives are established and agreed to by organizational stakeholders.",
+      "category": "GOVERN",
+      "subcategory": "Risk Management Strategy"
+    },
+    {
+      "code": "GV.RM-02",
+      "name": "Risk appetite and tolerance are established",
+      "description": "Risk appetite and risk tolerance statements are established, communicated, and maintained.",
+      "category": "GOVERN",
+      "subcategory": "Risk Management Strategy"
+    },
+    {
+      "code": "GV.RM-03",
+      "name": "Risk management activities are integrated",
+      "description": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes.",
+      "category": "GOVERN",
+      "subcategory": "Risk Management Strategy"
+    },
+    {
+      "code": "GV.RM-04",
+      "name": "Strategic direction is established",
+      "description": "Strategic direction that describes appropriate risk response options is established and communicated.",
+      "category": "GOVERN",
+      "subcategory": "Risk Management Strategy"
+    },
+    {
+      "code": "GV.RR-01",
+      "name": "Organizational leadership is responsible",
+      "description": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving.",
+      "category": "GOVERN",
+      "subcategory": "Roles, Responsibilities, and Authorities"
+    },
+    {
+      "code": "GV.RR-02",
+      "name": "Roles and responsibilities are established",
+      "description": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced.",
+      "category": "GOVERN",
+      "subcategory": "Roles, Responsibilities, and Authorities"
+    },
+    {
+      "code": "GV.RR-03",
+      "name": "Adequate resources are allocated",
+      "description": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies.",
+      "category": "GOVERN",
+      "subcategory": "Roles, Responsibilities, and Authorities"
+    },
+    {
+      "code": "GV.RR-04",
+      "name": "Cybersecurity is included in HR practices",
+      "description": "Cybersecurity is included in human resources practices.",
+      "category": "GOVERN",
+      "subcategory": "Roles, Responsibilities, and Authorities"
+    },
+    {
+      "code": "GV.PO-01",
+      "name": "Policy is established based on context",
+      "description": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced.",
+      "category": "GOVERN",
+      "subcategory": "Policy"
+    },
+    {
+      "code": "GV.PO-02",
+      "name": "Policy is reviewed and updated",
+      "description": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission.",
+      "category": "GOVERN",
+      "subcategory": "Policy"
+    },
+    {
+      "code": "GV.SC-01",
+      "name": "Cybersecurity supply chain risk management program",
+      "description": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders.",
+      "category": "GOVERN",
+      "subcategory": "Cybersecurity Supply Chain Risk Management"
+    },
+    {
+      "code": "GV.SC-02",
+      "name": "Suppliers are identified and prioritized",
+      "description": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally.",
+      "category": "GOVERN",
+      "subcategory": "Cybersecurity Supply Chain Risk Management"
+    },
+    {
+      "code": "GV.SC-03",
+      "name": "Supply chain risk is integrated",
+      "description": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes.",
+      "category": "GOVERN",
+      "subcategory": "Cybersecurity Supply Chain Risk Management"
+    },
+    {
+      "code": "GV.SC-04",
+      "name": "Suppliers are assessed",
+      "description": "Suppliers are known and prioritized by criticality.",
+      "category": "GOVERN",
+      "subcategory": "Cybersecurity Supply Chain Risk Management"
+    },
+    {
+      "code": "GV.SC-05",
+      "name": "Supply chain requirements are established",
+      "description": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other agreements with suppliers and other relevant third parties.",
+      "category": "GOVERN",
+      "subcategory": "Cybersecurity Supply Chain Risk Management"
+    },
+    {
+      "code": "ID.AM-01",
+      "name": "Hardware inventory is maintained",
+      "description": "Inventories of hardware managed by the organization are maintained.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-02",
+      "name": "Software inventory is maintained",
+      "description": "Inventories of software, services, and systems managed by the organization are maintained.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-03",
+      "name": "Network communication flows are documented",
+      "description": "Representations of the organization's authorized network communication and internal and external network data flows are maintained.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-04",
+      "name": "External systems are catalogued",
+      "description": "Inventories of services provided by suppliers are maintained.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-05",
+      "name": "Assets are prioritized",
+      "description": "Assets are prioritized based on classification, criticality, resources, and impact on the mission.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-07",
+      "name": "Data inventory is maintained",
+      "description": "Inventories of data and corresponding metadata for designated data types are maintained.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.AM-08",
+      "name": "Systems and assets are managed",
+      "description": "Systems, hardware, software, and services are managed throughout their life cycles.",
+      "category": "IDENTIFY",
+      "subcategory": "Asset Management"
+    },
+    {
+      "code": "ID.RA-01",
+      "name": "Vulnerabilities are identified",
+      "description": "Vulnerabilities in assets are identified, validated, and recorded.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-02",
+      "name": "Threat intelligence is received",
+      "description": "Cyber threat intelligence is received from information sharing forums and sources.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-03",
+      "name": "Threats are identified",
+      "description": "Internal and external threats to the organization are identified and recorded.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-04",
+      "name": "Potential impacts are identified",
+      "description": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-05",
+      "name": "Threats and vulnerabilities are used for risk",
+      "description": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-06",
+      "name": "Risk responses are chosen",
+      "description": "Risk responses are chosen, prioritized, planned, tracked, and communicated.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-07",
+      "name": "Changes and exceptions are managed",
+      "description": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-08",
+      "name": "Processes for receiving disclosure are established",
+      "description": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-09",
+      "name": "Severity of events is assessed",
+      "description": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.RA-10",
+      "name": "Critical suppliers are assessed",
+      "description": "Critical suppliers are assessed prior to acquisition.",
+      "category": "IDENTIFY",
+      "subcategory": "Risk Assessment"
+    },
+    {
+      "code": "ID.IM-01",
+      "name": "Improvements are identified from evaluations",
+      "description": "Improvements are identified from evaluations.",
+      "category": "IDENTIFY",
+      "subcategory": "Improvement"
+    },
+    {
+      "code": "ID.IM-02",
+      "name": "Improvements are identified from tests",
+      "description": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties.",
+      "category": "IDENTIFY",
+      "subcategory": "Improvement"
+    },
+    {
+      "code": "ID.IM-03",
+      "name": "Improvements are identified from incidents",
+      "description": "Improvements are identified from execution of operational processes, procedures, and activities.",
+      "category": "IDENTIFY",
+      "subcategory": "Improvement"
+    },
+    {
+      "code": "ID.IM-04",
+      "name": "Incident response plans are incorporated",
+      "description": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved.",
+      "category": "IDENTIFY",
+      "subcategory": "Improvement"
+    },
+    {
+      "code": "PR.AA-01",
+      "name": "Identities and credentials are managed",
+      "description": "Identities and credentials for authorized users, services, and hardware are managed by the organization.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AA-02",
+      "name": "Identities are proofed and bound",
+      "description": "Identities are proofed and bound to credentials based on the context of interactions.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AA-03",
+      "name": "Users and services are authenticated",
+      "description": "Users, services, and hardware are authenticated.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AA-04",
+      "name": "Identity assertions are protected",
+      "description": "Identity assertions are protected, conveyed, and verified.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AA-05",
+      "name": "Access permissions are managed",
+      "description": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AA-06",
+      "name": "Physical access is managed",
+      "description": "Physical access to assets is managed, monitored, and enforced commensurate with risk.",
+      "category": "PROTECT",
+      "subcategory": "Identity Management, Authentication, and Access Control"
+    },
+    {
+      "code": "PR.AT-01",
+      "name": "Personnel are provided awareness and training",
+      "description": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind.",
+      "category": "PROTECT",
+      "subcategory": "Awareness and Training"
+    },
+    {
+      "code": "PR.AT-02",
+      "name": "Individuals in specialized roles are trained",
+      "description": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind.",
+      "category": "PROTECT",
+      "subcategory": "Awareness and Training"
+    },
+    {
+      "code": "PR.DS-01",
+      "name": "Data-at-rest is protected",
+      "description": "The confidentiality, integrity, and availability of data-at-rest are protected.",
+      "category": "PROTECT",
+      "subcategory": "Data Security"
+    },
+    {
+      "code": "PR.DS-02",
+      "name": "Data-in-transit is protected",
+      "description": "The confidentiality, integrity, and availability of data-in-transit are protected.",
+      "category": "PROTECT",
+      "subcategory": "Data Security"
+    },
+    {
+      "code": "PR.DS-10",
+      "name": "Data-in-use is protected",
+      "description": "The confidentiality, integrity, and availability of data-in-use are protected.",
+      "category": "PROTECT",
+      "subcategory": "Data Security"
+    },
+    {
+      "code": "PR.DS-11",
+      "name": "Backups are created and protected",
+      "description": "Backups of data are created, protected, maintained, and tested.",
+      "category": "PROTECT",
+      "subcategory": "Data Security"
+    },
+    {
+      "code": "PR.PS-01",
+      "name": "Configuration management is established",
+      "description": "Configuration management practices are established and applied.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.PS-02",
+      "name": "Software is maintained",
+      "description": "Software is maintained, replaced, and removed commensurate with risk.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.PS-03",
+      "name": "Hardware is maintained",
+      "description": "Hardware is maintained, replaced, and removed commensurate with risk.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.PS-04",
+      "name": "Log records are generated",
+      "description": "Log records are generated and made available for continuous monitoring.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.PS-05",
+      "name": "Installation of software is controlled",
+      "description": "Installation and execution of unauthorized software are prevented.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.PS-06",
+      "name": "Secure software development practices",
+      "description": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle.",
+      "category": "PROTECT",
+      "subcategory": "Platform Security"
+    },
+    {
+      "code": "PR.IR-01",
+      "name": "Networks are protected",
+      "description": "Networks and environments are protected from unauthorized logical access and usage.",
+      "category": "PROTECT",
+      "subcategory": "Technology Infrastructure Resilience"
+    },
+    {
+      "code": "PR.IR-02",
+      "name": "Technology assets are protected",
+      "description": "The organization's technology assets are protected from environmental threats.",
+      "category": "PROTECT",
+      "subcategory": "Technology Infrastructure Resilience"
+    },
+    {
+      "code": "PR.IR-03",
+      "name": "Resilience mechanisms are implemented",
+      "description": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations.",
+      "category": "PROTECT",
+      "subcategory": "Technology Infrastructure Resilience"
+    },
+    {
+      "code": "PR.IR-04",
+      "name": "Adequate resource capacity is maintained",
+      "description": "Adequate resource capacity to ensure availability is maintained.",
+      "category": "PROTECT",
+      "subcategory": "Technology Infrastructure Resilience"
+    },
+    {
+      "code": "DE.CM-01",
+      "name": "Networks are monitored",
+      "description": "Networks and network services are monitored to find potentially adverse events.",
+      "category": "DETECT",
+      "subcategory": "Continuous Monitoring"
+    },
+    {
+      "code": "DE.CM-02",
+      "name": "Physical environment is monitored",
+      "description": "The physical environment is monitored to find potentially adverse events.",
+      "category": "DETECT",
+      "subcategory": "Continuous Monitoring"
+    },
+    {
+      "code": "DE.CM-03",
+      "name": "Personnel activity is monitored",
+      "description": "Personnel activity and technology usage are monitored to find potentially adverse events.",
+      "category": "DETECT",
+      "subcategory": "Continuous Monitoring"
+    },
+    {
+      "code": "DE.CM-06",
+      "name": "External service provider activity is monitored",
+      "description": "External service provider activities and services are monitored to find potentially adverse events.",
+      "category": "DETECT",
+      "subcategory": "Continuous Monitoring"
+    },
+    {
+      "code": "DE.CM-09",
+      "name": "Computing hardware is monitored",
+      "description": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events.",
+      "category": "DETECT",
+      "subcategory": "Continuous Monitoring"
+    },
+    {
+      "code": "DE.AE-02",
+      "name": "Potentially adverse events are analyzed",
+      "description": "Potentially adverse events are analyzed to better understand associated activities.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "DE.AE-03",
+      "name": "Events are correlated",
+      "description": "Information is correlated from multiple sources.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "DE.AE-04",
+      "name": "Impact of events is estimated",
+      "description": "The estimated impact and scope of adverse events are understood.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "DE.AE-06",
+      "name": "Information on adverse events is provided",
+      "description": "Information on adverse events is provided to authorized staff and tools.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "DE.AE-07",
+      "name": "Threat intelligence is integrated",
+      "description": "Cyber threat intelligence and other contextual information are integrated into the analysis.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "DE.AE-08",
+      "name": "Incidents are declared",
+      "description": "Incidents are declared when adverse events meet the defined incident criteria.",
+      "category": "DETECT",
+      "subcategory": "Adverse Event Analysis"
+    },
+    {
+      "code": "RS.MA-01",
+      "name": "Incident management plan is executed",
+      "description": "The incident response plan is executed in coordination with relevant third parties once an incident is declared.",
+      "category": "RESPOND",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "RS.MA-02",
+      "name": "Incident reports are triaged",
+      "description": "Incident reports are triaged and validated.",
+      "category": "RESPOND",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "RS.MA-03",
+      "name": "Incidents are categorized and prioritized",
+      "description": "Incidents are categorized and prioritized.",
+      "category": "RESPOND",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "RS.MA-04",
+      "name": "Incidents are escalated or elevated",
+      "description": "Incidents are escalated or elevated as needed.",
+      "category": "RESPOND",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "RS.MA-05",
+      "name": "Incident criteria are applied",
+      "description": "The criteria for initiating incident recovery are applied.",
+      "category": "RESPOND",
+      "subcategory": "Incident Management"
+    },
+    {
+      "code": "RS.AN-03",
+      "name": "Analysis is performed",
+      "description": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident.",
+      "category": "RESPOND",
+      "subcategory": "Incident Analysis"
+    },
+    {
+      "code": "RS.AN-06",
+      "name": "Actions taken are recorded",
+      "description": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved.",
+      "category": "RESPOND",
+      "subcategory": "Incident Analysis"
+    },
+    {
+      "code": "RS.AN-07",
+      "name": "Incident data is collected and preserved",
+      "description": "Incident data and metadata are collected, and their integrity and provenance are preserved.",
+      "category": "RESPOND",
+      "subcategory": "Incident Analysis"
+    },
+    {
+      "code": "RS.AN-08",
+      "name": "Incident's magnitude is estimated",
+      "description": "An incident's magnitude is estimated and validated.",
+      "category": "RESPOND",
+      "subcategory": "Incident Analysis"
+    },
+    {
+      "code": "RS.CO-02",
+      "name": "Internal stakeholders are notified",
+      "description": "Internal and external stakeholders are notified of incidents.",
+      "category": "RESPOND",
+      "subcategory": "Incident Response Reporting and Communication"
+    },
+    {
+      "code": "RS.CO-03",
+      "name": "Information is shared with stakeholders",
+      "description": "Information is shared with designated internal and external stakeholders.",
+      "category": "RESPOND",
+      "subcategory": "Incident Response Reporting and Communication"
+    },
+    {
+      "code": "RS.MI-01",
+      "name": "Incidents are contained",
+      "description": "Incidents are contained.",
+      "category": "RESPOND",
+      "subcategory": "Incident Mitigation"
+    },
+    {
+      "code": "RS.MI-02",
+      "name": "Incidents are eradicated",
+      "description": "Incidents are eradicated.",
+      "category": "RESPOND",
+      "subcategory": "Incident Mitigation"
+    },
+    {
+      "code": "RC.RP-01",
+      "name": "Recovery plan is executed",
+      "description": "The recovery portion of the incident response plan is executed once initiated from the incident response process.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.RP-02",
+      "name": "Recovery actions are selected",
+      "description": "Recovery actions are selected, scoped, prioritized, and performed.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.RP-03",
+      "name": "Integrity of backups is verified",
+      "description": "The integrity of backups and other restoration assets is verified before using them for restoration.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.RP-04",
+      "name": "Critical functions are considered",
+      "description": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.RP-05",
+      "name": "Recovery verification is performed",
+      "description": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.RP-06",
+      "name": "End of recovery is declared",
+      "description": "The end of incident recovery is declared based on criteria, and incident-related documentation is completed.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Plan Execution"
+    },
+    {
+      "code": "RC.CO-03",
+      "name": "Recovery activities are communicated",
+      "description": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Communication"
+    },
+    {
+      "code": "RC.CO-04",
+      "name": "Public updates are shared",
+      "description": "Public updates on incident recovery are shared using approved methods and messaging.",
+      "category": "RECOVER",
+      "subcategory": "Incident Recovery Communication"
+    }
+  ]
+}
