@@ -102,6 +102,8 @@ npm run db:studio    # Open Prisma Studio
 - **ProjectControl**: Controls assigned to a project with implementation status (Technical Measures)
 - **OrganizationalMeasure**: Custom organizational measures (policies, training, procedures) for a project
 - **DPIA**: Data Protection Impact Assessment for a project (Swiss FADP Art. 22 compliant)
+- **Audit**: Audit record for verifying control implementation status
+- **ControlAudit**: Individual control verification records within an audit
 
 ### Key Relationships
 
@@ -111,6 +113,7 @@ npm run db:studio    # Open Prisma Studio
 - Projects have many ProjectControls (Technical Measures from standards)
 - Projects have many OrganizationalMeasures (custom policies, training, procedures)
 - Projects have one optional DPIA
+- Projects have many Audits (each audit has ControlAudits for each control)
 
 ## Authentication
 
@@ -155,6 +158,14 @@ All API routes require authentication.
 - `POST /api/projects/[id]/organizational-measures` - Create organizational measure
 - `PATCH /api/projects/[id]/organizational-measures/[measureId]` - Update measure
 - `DELETE /api/projects/[id]/organizational-measures/[measureId]` - Delete measure
+
+### Audits
+- `GET /api/projects/[id]/audits` - List project's audits
+- `POST /api/projects/[id]/audits` - Start new audit (creates ControlAudit for each project control)
+- `GET /api/projects/[id]/audits/[auditId]` - Get audit with control audits
+- `PATCH /api/projects/[id]/audits/[auditId]` - Complete audit
+- `DELETE /api/projects/[id]/audits/[auditId]` - Delete audit
+- `PATCH /api/projects/[id]/audits/[auditId]/controls/[controlAuditId]` - Update control verification status
 
 ## Environment Variables
 
@@ -235,6 +246,13 @@ Each project has three main sections:
    - Security controls from standards (ISO 27001, NIST CSF, SOC 2)
    - Assigned from the control library
    - Implementation status tracking
+
+4. **Audit**
+   - Verify implementation status of controls
+   - Track verification status: NOT_VERIFIED, VERIFIED, NEEDS_ATTENTION
+   - Record auditor name and timestamps
+   - Add notes per control and overall audit notes
+   - Only one audit can be in progress at a time
 
 ## Development Notes
 

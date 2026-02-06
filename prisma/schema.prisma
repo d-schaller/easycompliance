@@ -152,6 +152,7 @@ model Project {
   controls                ProjectControl[]
   dpia                    DPIA?
   organizationalMeasures  OrganizationalMeasure[]
+  audits                  Audit[]
 
   @@index([organizationId])
   @@index([status])
@@ -266,4 +267,62 @@ enum RiskLevel {
   LOW
   MEDIUM
   HIGH
+}
+
+// ============================================
+// Audit Models
+// ============================================
+
+enum AuditStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum VerificationStatus {
+  NOT_VERIFIED
+  VERIFIED
+  NEEDS_ATTENTION
+}
+
+model Audit {
+  id          String      @id @default(cuid())
+  projectId   String
+  status      AuditStatus @default(IN_PROGRESS)
+
+  // Audit metadata
+  startedBy   String      // Auditor name
+  startedAt   DateTime    @default(now())
+  completedBy String?     // Who finished the audit
+  completedAt DateTime?   // When audit was completed
+  notes       String?     @db.Text  // Overall audit notes
+
+  // Related records
+  controlAudits ControlAudit[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([status])
+}
+
+model ControlAudit {
+  id                 String             @id @default(cuid())
+  auditId            String
+  projectControlId   String
+
+  verificationStatus VerificationStatus @default(NOT_VERIFIED)
+  notes              String?            @db.Text
+  verifiedAt         DateTime?
+  verifiedBy         String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  audit Audit @relation(fields: [auditId], references: [id], onDelete: Cascade)
+
+  @@unique([auditId, projectControlId])
+  @@index([auditId])
 }

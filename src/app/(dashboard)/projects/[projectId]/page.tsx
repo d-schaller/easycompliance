@@ -11,12 +11,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Plus, CheckCircle, Clock, XCircle, Shield, FileText, AlertTriangle, Server } from "lucide-react";
+import { ArrowLeft, CheckCircle, Clock, XCircle, Shield, FileText, AlertTriangle, Server } from "lucide-react";
 import { AddControlsDialog } from "./add-controls-dialog";
 import { ControlsTable } from "./controls-table";
 import { DownloadReportButton } from "./download-report-button";
 import { CreateDPIAButton } from "./create-dpia-button";
 import { OrganizationalMeasuresSection } from "./organizational-measures-section";
+import { AuditSection } from "./audit-section";
 
 export default async function ProjectDetailPage({
   params,
@@ -58,6 +59,10 @@ export default async function ProjectDetailPage({
       dpia: true,
       organizationalMeasures: {
         orderBy: { createdAt: "desc" },
+      },
+      audits: {
+        orderBy: { createdAt: "desc" },
+        take: 5,
       },
     },
   });
@@ -143,17 +148,10 @@ export default async function ProjectDetailPage({
             <p className="mt-1 text-gray-600">{project.description}</p>
           )}
         </div>
-        <div className="flex gap-2">
-          <DownloadReportButton
-            projectId={project.id}
-            projectName={project.name}
-          />
-          <AddControlsDialog
-            projectId={project.id}
-            standards={standards}
-            existingControlIds={existingControlIds}
-          />
-        </div>
+        <DownloadReportButton
+          projectId={project.id}
+          projectName={project.name}
+        />
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
@@ -329,6 +327,20 @@ export default async function ProjectDetailPage({
         </CardContent>
       </Card>
 
+      {/* Audit Section */}
+      <AuditSection
+        projectId={project.id}
+        audits={project.audits.map((a) => ({
+          id: a.id,
+          status: a.status,
+          startedBy: a.startedBy,
+          startedAt: a.startedAt,
+          completedBy: a.completedBy,
+          completedAt: a.completedAt,
+        }))}
+        hasControls={project.controls.length > 0}
+      />
+
       {/* Organizational Measures Section */}
       <OrganizationalMeasuresSection
         projectId={project.id}
@@ -354,6 +366,11 @@ export default async function ProjectDetailPage({
                 </CardDescription>
               </div>
             </div>
+            <AddControlsDialog
+              projectId={project.id}
+              standards={standards}
+              existingControlIds={existingControlIds}
+            />
           </div>
         </CardHeader>
         <CardContent>
@@ -362,13 +379,8 @@ export default async function ProjectDetailPage({
               <Server className="h-12 w-12 text-gray-400" />
               <h3 className="mt-4 text-lg font-medium">No technical measures added</h3>
               <p className="mt-2 text-gray-500">
-                Add security controls from standards (ISO 27001, NIST CSF, etc.)
+                Add security controls from standards (ISO 27001, NIST CSF, etc.) using the button above.
               </p>
-              <AddControlsDialog
-                projectId={project.id}
-                standards={standards}
-                existingControlIds={existingControlIds}
-              />
             </div>
           ) : (
             <ControlsTable
