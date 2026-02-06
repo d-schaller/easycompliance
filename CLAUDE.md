@@ -99,14 +99,18 @@ npm run db:studio    # Open Prisma Studio
 - **Standard**: Security standards (ISO 27001, NIST CSF)
 - **Control**: Individual controls within a standard
 - **Project**: Compliance projects belonging to an organization
-- **ProjectControl**: Controls assigned to a project with implementation status
+- **ProjectControl**: Controls assigned to a project with implementation status (Technical Measures)
+- **OrganizationalMeasure**: Custom organizational measures (policies, training, procedures) for a project
+- **DPIA**: Data Protection Impact Assessment for a project (Swiss FADP Art. 22 compliant)
 
 ### Key Relationships
 
 - Users belong to Organizations via UserOrganization (many-to-many with roles)
 - Organizations have many Projects
 - Standards have many Controls
-- Projects have many ProjectControls (which link to Controls)
+- Projects have many ProjectControls (Technical Measures from standards)
+- Projects have many OrganizationalMeasures (custom policies, training, procedures)
+- Projects have one optional DPIA
 
 ## Authentication
 
@@ -138,6 +142,19 @@ All API routes require authentication.
 
 ### Controls
 - `GET /api/controls` - List/search controls (with filters)
+
+### DPIA (Data Protection Impact Assessment)
+- `GET /api/projects/[id]/dpia` - Get project's DPIA
+- `POST /api/projects/[id]/dpia` - Create DPIA for project
+- `PATCH /api/projects/[id]/dpia` - Update DPIA
+- `DELETE /api/projects/[id]/dpia` - Delete DPIA
+- `GET /api/projects/[id]/dpia/report` - Download DPIA as PDF
+
+### Organizational Measures
+- `GET /api/projects/[id]/organizational-measures` - List project's organizational measures
+- `POST /api/projects/[id]/organizational-measures` - Create organizational measure
+- `PATCH /api/projects/[id]/organizational-measures/[measureId]` - Update measure
+- `DELETE /api/projects/[id]/organizational-measures/[measureId]` - Delete measure
 
 ## Environment Variables
 
@@ -198,6 +215,27 @@ Role hierarchy for organization access:
 - **MEMBER** - Can create/edit projects and controls
 - **VIEWER** - Read-only access
 
+## Project Structure (Compliance View)
+
+Each project has three main sections:
+
+1. **DPIA (Data Protection Impact Assessment)**
+   - Swiss FADP Art. 22 compliant assessment
+   - Two-stage process: preliminary assessment + full assessment
+   - Includes risk identification, data categories, legal basis
+   - PDF report generation
+   - FDPIC consultation tracking when required
+
+2. **Organizational Measures**
+   - Custom policies, training, and procedures
+   - Categories: Policy & Governance, Training & Awareness, Process & Procedure, Access Control, Incident Response, Monitoring & Audit, Vendor Management, Documentation
+   - Tracked separately from technical controls
+
+3. **Technical Measures**
+   - Security controls from standards (ISO 27001, NIST CSF, SOC 2)
+   - Assigned from the control library
+   - Implementation status tracking
+
 ## Development Notes
 
 - All database queries are scoped to the user's organization
@@ -205,3 +243,4 @@ Role hierarchy for organization access:
 - Use `hasPermission()` to check role-based access
 - The landing page is public; dashboard routes require auth
 - Prisma client is a singleton to prevent connection exhaustion
+- PDF generation uses @react-pdf/renderer

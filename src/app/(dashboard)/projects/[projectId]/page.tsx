@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Plus, CheckCircle, Clock, XCircle, Shield, FileText, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Plus, CheckCircle, Clock, XCircle, Shield, FileText, AlertTriangle, Server } from "lucide-react";
 import { AddControlsDialog } from "./add-controls-dialog";
 import { ControlsTable } from "./controls-table";
 import { DownloadReportButton } from "./download-report-button";
@@ -181,7 +181,7 @@ export default async function ProjectDetailPage({
           <CardContent>
             <div className="text-2xl font-bold">{stats.implemented}</div>
             <p className="text-xs text-muted-foreground">
-              of {stats.total} controls
+              of {stats.total} measures
             </p>
           </CardContent>
         </Card>
@@ -194,7 +194,7 @@ export default async function ProjectDetailPage({
           <CardContent>
             <div className="text-2xl font-bold">{stats.inProgress}</div>
             <p className="text-xs text-muted-foreground">
-              controls being worked on
+              measures being worked on
             </p>
           </CardContent>
         </Card>
@@ -207,7 +207,7 @@ export default async function ProjectDetailPage({
           <CardContent>
             <div className="text-2xl font-bold">{stats.notStarted}</div>
             <p className="text-xs text-muted-foreground">
-              controls pending
+              measures pending
             </p>
           </CardContent>
         </Card>
@@ -345,21 +345,24 @@ export default async function ProjectDetailPage({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <div>
-              <CardTitle>Controls</CardTitle>
-              <CardDescription>
-                {stats.total} controls assigned to this project
-              </CardDescription>
+            <div className="flex items-center gap-2">
+              <Server className="h-5 w-5 text-blue-600" />
+              <div>
+                <CardTitle>Technical Measures</CardTitle>
+                <CardDescription>
+                  {stats.total} security controls from standards assigned to this project
+                </CardDescription>
+              </div>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           {project.controls.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Plus className="h-12 w-12 text-gray-400" />
-              <h3 className="mt-4 text-lg font-medium">No controls added</h3>
+              <Server className="h-12 w-12 text-gray-400" />
+              <h3 className="mt-4 text-lg font-medium">No technical measures added</h3>
               <p className="mt-2 text-gray-500">
-                Add controls from security standards to start tracking
+                Add security controls from standards (ISO 27001, NIST CSF, etc.)
               </p>
               <AddControlsDialog
                 projectId={project.id}
