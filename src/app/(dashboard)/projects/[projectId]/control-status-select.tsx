@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -9,20 +10,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { IMPLEMENTATION_STATUS_OPTIONS } from "@/lib/constants";
 
 interface ControlStatusSelectProps {
   projectId: string;
   controlId: string;
   currentStatus: string;
 }
-
-const statusOptions = [
-  { value: "NOT_STARTED", label: "Not Started" },
-  { value: "IN_PROGRESS", label: "In Progress" },
-  { value: "PARTIALLY_IMPLEMENTED", label: "Partially Implemented" },
-  { value: "IMPLEMENTED", label: "Implemented" },
-  { value: "NOT_APPLICABLE", label: "Not Applicable" },
-];
 
 export function ControlStatusSelect({
   projectId,
@@ -34,17 +28,27 @@ export function ControlStatusSelect({
   const [isUpdating, setIsUpdating] = useState(false);
 
   async function handleStatusChange(newStatus: string) {
+    const previousStatus = status;
     setStatus(newStatus);
     setIsUpdating(true);
 
     try {
-      await fetch(`/api/projects/${projectId}/controls/${controlId}`, {
+      const response = await fetch(`/api/projects/${projectId}/controls/${controlId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ implementationStatus: newStatus }),
       });
 
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to update status");
+      }
+
+      toast.success("Status updated");
       router.refresh();
+    } catch (error) {
+      setStatus(previousStatus);
+      toast.error(error instanceof Error ? error.message : "Failed to update status");
     } finally {
       setIsUpdating(false);
     }
@@ -56,7 +60,7 @@ export function ControlStatusSelect({
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {statusOptions.map((option) => (
+        {IMPLEMENTATION_STATUS_OPTIONS.map((option) => (
           <SelectItem key={option.value} value={option.value} className="text-xs">
             {option.label}
           </SelectItem>

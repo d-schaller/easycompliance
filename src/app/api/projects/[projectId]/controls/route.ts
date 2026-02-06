@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireAuth, hasPermission } from "@/lib/auth-utils";
+import {
+  requireAuth,
+  hasPermission,
+  verifyProjectAccess,
+  projectNotFoundResponse,
+  handleApiError,
+} from "@/lib/auth-utils";
 import { addControlsToProjectSchema } from "@/lib/validations/project";
 
 export async function GET(
@@ -12,15 +18,9 @@ export async function GET(
 
   const { projectId } = await params;
 
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   const projectControls = await prisma.projectControl.findMany({
@@ -54,15 +54,9 @@ export async function POST(
 
   const { projectId } = await params;
 
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   try {
@@ -117,17 +111,6 @@ export async function POST(
       { status: 201 }
     );
   } catch (err) {
-    if (err instanceof Error && err.name === "ZodError") {
-      return NextResponse.json(
-        { error: "Invalid input data", details: err },
-        { status: 400 }
-      );
-    }
-
-    console.error("Error adding controls to project:", err);
-    return NextResponse.json(
-      { error: "Failed to add controls to project" },
-      { status: 500 }
-    );
+    return handleApiError(err, "add controls to project");
   }
 }

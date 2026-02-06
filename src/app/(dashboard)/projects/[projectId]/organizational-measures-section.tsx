@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -33,7 +34,9 @@ import { Plus, Loader2, Settings, Trash2 } from "lucide-react";
 import {
   MEASURE_CATEGORIES,
   MEASURE_CATEGORY_LABELS,
-} from "@/lib/validations/organizational-measure";
+  IMPLEMENTATION_STATUS_OPTIONS,
+  type MeasureCategory,
+} from "@/lib/constants";
 
 interface OrganizationalMeasure {
   id: string;
@@ -110,11 +113,17 @@ export function OrganizationalMeasuresSection({
         }
       );
 
-      if (response.ok) {
-        setFormData({ name: "", description: "", category: "", responsiblePerson: "" });
-        setIsAddDialogOpen(false);
-        router.refresh();
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to add measure");
       }
+
+      setFormData({ name: "", description: "", category: "", responsiblePerson: "" });
+      setIsAddDialogOpen(false);
+      toast.success("Measure added");
+      router.refresh();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to add measure");
     } finally {
       setIsLoading(false);
     }
@@ -152,11 +161,17 @@ export function OrganizationalMeasuresSection({
         }
       );
 
-      if (response.ok) {
-        setIsEditDialogOpen(false);
-        setSelectedMeasure(null);
-        router.refresh();
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to update measure");
       }
+
+      setIsEditDialogOpen(false);
+      setSelectedMeasure(null);
+      toast.success("Measure updated");
+      router.refresh();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to update measure");
     } finally {
       setIsLoading(false);
     }
@@ -171,11 +186,15 @@ export function OrganizationalMeasuresSection({
         { method: "DELETE" }
       );
 
-      if (response.ok) {
-        router.refresh();
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to delete measure");
       }
+
+      toast.success("Measure deleted");
+      router.refresh();
     } catch (error) {
-      console.error("Error deleting measure:", error);
+      toast.error(error instanceof Error ? error.message : "Failed to delete measure");
     }
   }
 
@@ -325,7 +344,7 @@ export function OrganizationalMeasuresSection({
                   <div className="flex items-center gap-3">
                     {measure.category && (
                       <Badge variant="outline" className="text-xs">
-                        {MEASURE_CATEGORY_LABELS[measure.category] ||
+                        {MEASURE_CATEGORY_LABELS[measure.category as MeasureCategory] ||
                           measure.category}
                       </Badge>
                     )}
@@ -407,13 +426,11 @@ export function OrganizationalMeasuresSection({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="NOT_STARTED">Not Started</SelectItem>
-                  <SelectItem value="IN_PROGRESS">In Progress</SelectItem>
-                  <SelectItem value="PARTIALLY_IMPLEMENTED">
-                    Partially Implemented
-                  </SelectItem>
-                  <SelectItem value="IMPLEMENTED">Implemented</SelectItem>
-                  <SelectItem value="NOT_APPLICABLE">Not Applicable</SelectItem>
+                  {IMPLEMENTATION_STATUS_OPTIONS.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

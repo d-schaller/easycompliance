@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -12,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CheckCircle, AlertTriangle, MinusCircle, Loader2 } from "lucide-react";
-import { VERIFICATION_STATUS_LABELS } from "@/lib/validations/audit";
+import { VERIFICATION_STATUS_LABELS, type VerificationStatus } from "@/lib/constants";
 
 interface ControlAuditRowProps {
   projectId: string;
@@ -38,14 +39,6 @@ interface ControlAuditRowProps {
   };
   isCompleted: boolean;
 }
-
-const IMPLEMENTATION_STATUS_LABELS: Record<string, string> = {
-  NOT_STARTED: "Not Started",
-  IN_PROGRESS: "In Progress",
-  IMPLEMENTED: "Implemented",
-  NOT_APPLICABLE: "N/A",
-  PARTIALLY_IMPLEMENTED: "Partial",
-};
 
 export function ControlAuditRow({
   projectId,
@@ -75,11 +68,14 @@ export function ControlAuditRow({
         }
       );
 
-      if (response.ok) {
-        router.refresh();
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to update verification status");
       }
+
+      router.refresh();
     } catch (err) {
-      console.error("Error updating control audit:", err);
+      toast.error(err instanceof Error ? err.message : "Failed to update verification status");
     } finally {
       setIsLoading(false);
     }
@@ -95,7 +91,7 @@ export function ControlAuditRow({
 
     const timeout = setTimeout(async () => {
       try {
-        await fetch(
+        const response = await fetch(
           `/api/projects/${projectId}/audits/${auditId}/controls/${controlAudit.id}`,
           {
             method: "PATCH",
@@ -106,8 +102,12 @@ export function ControlAuditRow({
             }),
           }
         );
+
+        if (!response.ok) {
+          throw new Error("Failed to save notes");
+        }
       } catch (err) {
-        console.error("Error saving notes:", err);
+        toast.error("Failed to save notes");
       }
     }, 500);
 
@@ -169,7 +169,7 @@ export function ControlAuditRow({
               <div className="flex items-center gap-2 justify-end">
                 {getVerificationIcon(controlAudit.verificationStatus)}
                 <span className="text-sm">
-                  {VERIFICATION_STATUS_LABELS[controlAudit.verificationStatus]}
+                  {VERIFICATION_STATUS_LABELS[controlAudit.verificationStatus as VerificationStatus]}
                 </span>
               </div>
             ) : (

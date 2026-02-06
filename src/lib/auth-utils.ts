@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 export async function getAuthenticatedUser() {
   const session = await auth();
@@ -59,5 +60,45 @@ export function hasPermission(
   return (
     roleHierarchy[role as keyof typeof roleHierarchy] >=
     roleHierarchy[requiredRole]
+  );
+}
+
+/**
+ * Verifies that a project exists and belongs to the given organization.
+ * Returns the project if found, or null if not found.
+ */
+export async function verifyProjectAccess(projectId: string, organizationId: string) {
+  const project = await prisma.project.findFirst({
+    where: {
+      id: projectId,
+      organizationId,
+    },
+  });
+  return project;
+}
+
+/**
+ * Returns a 404 response for project not found.
+ */
+export function projectNotFoundResponse() {
+  return NextResponse.json({ error: "Project not found" }, { status: 404 });
+}
+
+/**
+ * Handles API errors consistently.
+ * Returns appropriate error response based on error type.
+ */
+export function handleApiError(err: unknown, context: string) {
+  if (err instanceof ZodError) {
+    return NextResponse.json(
+      { error: "Invalid input data", details: err.issues },
+      { status: 400 }
+    );
+  }
+
+  console.error(`Error in ${context}:`, err);
+  return NextResponse.json(
+    { error: `Failed to ${context}` },
+    { status: 500 }
   );
 }

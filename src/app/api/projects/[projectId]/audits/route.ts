@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireAuth, hasPermission } from "@/lib/auth-utils";
+import {
+  requireAuth,
+  hasPermission,
+  verifyProjectAccess,
+  projectNotFoundResponse,
+  handleApiError,
+} from "@/lib/auth-utils";
 import { startAuditSchema } from "@/lib/validations/audit";
 
 export async function GET(
@@ -12,16 +18,9 @@ export async function GET(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   const audits = await prisma.audit.findMany({
@@ -51,7 +50,7 @@ export async function POST(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
+  // Need to include controls for creating audit entries
   const project = await prisma.project.findFirst({
     where: {
       id: projectId,
@@ -63,7 +62,7 @@ export async function POST(
   });
 
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   // Check if there's already an audit in progress
@@ -103,17 +102,6 @@ export async function POST(
 
     return NextResponse.json(audit, { status: 201 });
   } catch (err) {
-    if (err instanceof Error && err.name === "ZodError") {
-      return NextResponse.json(
-        { error: "Invalid input data", details: err },
-        { status: 400 }
-      );
-    }
-
-    console.error("Error creating audit:", err);
-    return NextResponse.json(
-      { error: "Failed to create audit" },
-      { status: 500 }
-    );
+    return handleApiError(err, "create audit");
   }
 }
