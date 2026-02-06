@@ -4,12 +4,14 @@ import { Shield, CheckCircle, FileCheck, Users } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <header className="border-b bg-white">
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-border bg-background">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2">
-            <Shield className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold">EasyCompliance</span>
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <Shield className="h-5 w-5 text-primary-foreground" />
+            </div>
+            <span className="text-xl font-semibold text-foreground">EasyCompliance</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/login">
@@ -23,13 +25,13 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
               Simplify your{" "}
-              <span className="text-blue-600">IT compliance</span>
+              <span className="text-primary">IT compliance</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Manage security controls across ISO 27001, NIST CSF, SOC 2, and
               more. Track implementation progress, maintain evidence, and
               demonstrate compliance with confidence.
@@ -49,50 +51,58 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white py-20">
+        <section className="border-y border-border bg-muted/30 py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-foreground">
                 Everything you need for compliance management
               </h2>
-              <p className="mt-4 text-lg text-gray-600">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Built for teams who take security seriously
               </p>
             </div>
 
-            <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-lg border bg-gray-50 p-6">
-                <Shield className="h-10 w-10 text-blue-600" />
-                <h3 className="mt-4 text-lg font-semibold">
+            <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <Shield className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">
                   Multiple Standards
                 </h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-muted-foreground">
                   Support for ISO 27001, NIST CSF, SOC 2, and custom frameworks
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-gray-50 p-6">
-                <CheckCircle className="h-10 w-10 text-green-600" />
-                <h3 className="mt-4 text-lg font-semibold">Track Progress</h3>
-                <p className="mt-2 text-gray-600">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-500/10">
+                  <CheckCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">Track Progress</h3>
+                <p className="mt-2 text-muted-foreground">
                   Monitor control implementation status across your organization
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-gray-50 p-6">
-                <FileCheck className="h-10 w-10 text-purple-600" />
-                <h3 className="mt-4 text-lg font-semibold">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-500/10">
+                  <FileCheck className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">
                   Evidence Management
                 </h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-muted-foreground">
                   Maintain documentation and evidence for each control
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-gray-50 p-6">
-                <Users className="h-10 w-10 text-orange-600" />
-                <h3 className="mt-4 text-lg font-semibold">Team Collaboration</h3>
-                <p className="mt-2 text-gray-600">
+              <div className="rounded-xl border border-border bg-card p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">Team Collaboration</h3>
+                <p className="mt-2 text-muted-foreground">
                   Assign controls to team members and track accountability
                 </p>
               </div>
@@ -100,13 +110,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl bg-blue-600 px-8 py-16 text-center">
-              <h2 className="text-3xl font-bold text-white">
+            <div className="rounded-2xl bg-primary px-8 py-16 text-center">
+              <h2 className="text-3xl font-bold text-primary-foreground">
                 Ready to simplify compliance?
               </h2>
-              <p className="mt-4 text-lg text-blue-100">
+              <p className="mt-4 text-lg text-primary-foreground/80">
                 Get started in minutes with our pre-built control libraries
               </p>
               <div className="mt-8">
@@ -114,7 +124,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="secondary"
-                    className="bg-white px-8 text-blue-600 hover:bg-gray-100"
+                    className="bg-white px-8 text-primary hover:bg-white/90"
                   >
                     Create Free Account
                   </Button>
@@ -125,14 +135,16 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t bg-gray-50 py-12">
+      <footer className="border-t border-border py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Shield className="h-6 w-6 text-blue-600" />
-              <span className="font-semibold">EasyCompliance</span>
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-primary">
+                <Shield className="h-4 w-4 text-primary-foreground" />
+              </div>
+              <span className="font-semibold text-foreground">EasyCompliance</span>
             </div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} EasyCompliance. All rights
               reserved.
             </p>

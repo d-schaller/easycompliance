@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireAuth } from "@/lib/auth-utils";
+import { requireAuth, projectNotFoundResponse } from "@/lib/auth-utils";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { DPIAReport } from "@/lib/pdf/dpia-report";
-import type { IdentifiedRisk } from "@/lib/validations/dpia";
+import { parseDPIA } from "@/lib/dpia-utils";
 import React from "react";
 
 export async function GET(
@@ -15,7 +15,7 @@ export async function GET(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
+  // Need to include related data for the PDF, so using findFirst with includes
   const project = await prisma.project.findFirst({
     where: {
       id: projectId,
@@ -45,26 +45,14 @@ export async function GET(
   });
 
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   if (!project.dpia) {
     return NextResponse.json({ error: "DPIA not found" }, { status: 404 });
   }
 
-  // Parse JSON fields
-  const parsedDPIA = {
-    ...project.dpia,
-    dataCategories: project.dpia.dataCategories
-      ? (JSON.parse(project.dpia.dataCategories) as string[])
-      : null,
-    sensitiveDataTypes: project.dpia.sensitiveDataTypes
-      ? (JSON.parse(project.dpia.sensitiveDataTypes) as string[])
-      : null,
-    identifiedRisks: project.dpia.identifiedRisks
-      ? (JSON.parse(project.dpia.identifiedRisks) as IdentifiedRisk[])
-      : null,
-  };
+  const parsedDPIAData = parseDPIA(project.dpia);
 
   // Prepare controls data for PDF
   const controls = project.controls.map((pc) => ({
@@ -86,7 +74,7 @@ export async function GET(
 
   try {
     const element = React.createElement(DPIAReport, {
-      dpia: parsedDPIA,
+      dpia: parsedDPIAData,
       project: {
         name: project.name,
         description: project.description,

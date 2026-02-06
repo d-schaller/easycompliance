@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { requireAuth, hasPermission } from "@/lib/auth-utils";
+import {
+  requireAuth,
+  hasPermission,
+  verifyProjectAccess,
+  projectNotFoundResponse,
+  handleApiError,
+} from "@/lib/auth-utils";
 import { createDPIASchema, updateDPIASchema } from "@/lib/validations/dpia";
+import { parseDPIA, prepareDPIAForDB } from "@/lib/dpia-utils";
 
 export async function GET(
   request: Request,
@@ -12,16 +19,9 @@ export async function GET(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   const dpia = await prisma.dPIA.findUnique({
@@ -32,15 +32,7 @@ export async function GET(
     return NextResponse.json({ error: "DPIA not found" }, { status: 404 });
   }
 
-  // Parse JSON fields
-  const parsedDPIA = {
-    ...dpia,
-    dataCategories: dpia.dataCategories ? JSON.parse(dpia.dataCategories) : null,
-    sensitiveDataTypes: dpia.sensitiveDataTypes ? JSON.parse(dpia.sensitiveDataTypes) : null,
-    identifiedRisks: dpia.identifiedRisks ? JSON.parse(dpia.identifiedRisks) : null,
-  };
-
-  return NextResponse.json(parsedDPIA);
+  return NextResponse.json(parseDPIA(dpia));
 }
 
 export async function POST(
@@ -59,16 +51,9 @@ export async function POST(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   // Check if DPIA already exists
@@ -87,39 +72,18 @@ export async function POST(
     const body = await request.json();
     const validatedData = createDPIASchema.parse(body);
 
+    const dbData = prepareDPIAForDB(validatedData);
+
     const dpia = await prisma.dPIA.create({
       data: {
         projectId,
-        processingDescription: validatedData.processingDescription,
-        dataCategories: validatedData.dataCategories
-          ? JSON.stringify(validatedData.dataCategories)
-          : null,
-        sensitiveDataTypes: validatedData.sensitiveDataTypes
-          ? JSON.stringify(validatedData.sensitiveDataTypes)
-          : null,
-        dataSubjects: validatedData.dataSubjects,
-        estimatedDataSubjects: validatedData.estimatedDataSubjects,
-        processingPurpose: validatedData.processingPurpose,
-        legalBasis: validatedData.legalBasis,
-        technologyDescription: validatedData.technologyDescription,
-        preliminaryRiskLevel: validatedData.preliminaryRiskLevel,
+        ...dbData,
       },
     });
 
-    return NextResponse.json(dpia, { status: 201 });
+    return NextResponse.json(parseDPIA(dpia), { status: 201 });
   } catch (err) {
-    if (err instanceof Error && err.name === "ZodError") {
-      return NextResponse.json(
-        { error: "Invalid input data", details: err },
-        { status: 400 }
-      );
-    }
-
-    console.error("Error creating DPIA:", err);
-    return NextResponse.json(
-      { error: "Failed to create DPIA" },
-      { status: 500 }
-    );
+    return handleApiError(err, "create DPIA");
   }
 }
 
@@ -139,16 +103,9 @@ export async function PATCH(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   // Check if DPIA exists
@@ -164,116 +121,16 @@ export async function PATCH(
     const body = await request.json();
     const validatedData = updateDPIASchema.parse(body);
 
-    // Prepare data for update, converting arrays to JSON strings
-    const updateData: Record<string, unknown> = {};
-
-    if (validatedData.status !== undefined) {
-      updateData.status = validatedData.status;
-    }
-    if (validatedData.processingDescription !== undefined) {
-      updateData.processingDescription = validatedData.processingDescription;
-    }
-    if (validatedData.dataCategories !== undefined) {
-      updateData.dataCategories = validatedData.dataCategories
-        ? JSON.stringify(validatedData.dataCategories)
-        : null;
-    }
-    if (validatedData.sensitiveDataTypes !== undefined) {
-      updateData.sensitiveDataTypes = validatedData.sensitiveDataTypes
-        ? JSON.stringify(validatedData.sensitiveDataTypes)
-        : null;
-    }
-    if (validatedData.dataSubjects !== undefined) {
-      updateData.dataSubjects = validatedData.dataSubjects;
-    }
-    if (validatedData.estimatedDataSubjects !== undefined) {
-      updateData.estimatedDataSubjects = validatedData.estimatedDataSubjects;
-    }
-    if (validatedData.processingPurpose !== undefined) {
-      updateData.processingPurpose = validatedData.processingPurpose;
-    }
-    if (validatedData.legalBasis !== undefined) {
-      updateData.legalBasis = validatedData.legalBasis;
-    }
-    if (validatedData.technologyDescription !== undefined) {
-      updateData.technologyDescription = validatedData.technologyDescription;
-    }
-    if (validatedData.preliminaryRiskLevel !== undefined) {
-      updateData.preliminaryRiskLevel = validatedData.preliminaryRiskLevel;
-    }
-    if (validatedData.identifiedRisks !== undefined) {
-      updateData.identifiedRisks = validatedData.identifiedRisks
-        ? JSON.stringify(validatedData.identifiedRisks)
-        : null;
-    }
-    if (validatedData.dataProtectionByDesign !== undefined) {
-      updateData.dataProtectionByDesign = validatedData.dataProtectionByDesign;
-    }
-    if (validatedData.residualRiskLevel !== undefined) {
-      updateData.residualRiskLevel = validatedData.residualRiskLevel;
-    }
-    if (validatedData.residualRiskJustification !== undefined) {
-      updateData.residualRiskJustification = validatedData.residualRiskJustification;
-    }
-    if (validatedData.requiresFDPICConsultation !== undefined) {
-      updateData.requiresFDPICConsultation = validatedData.requiresFDPICConsultation;
-    }
-    if (validatedData.dpoConsulted !== undefined) {
-      updateData.dpoConsulted = validatedData.dpoConsulted;
-    }
-    if (validatedData.dpoName !== undefined) {
-      updateData.dpoName = validatedData.dpoName;
-    }
-    if (validatedData.dpoOpinion !== undefined) {
-      updateData.dpoOpinion = validatedData.dpoOpinion;
-    }
-    if (validatedData.fdpicSubmissionDate !== undefined) {
-      updateData.fdpicSubmissionDate = validatedData.fdpicSubmissionDate
-        ? new Date(validatedData.fdpicSubmissionDate)
-        : null;
-    }
-    if (validatedData.assessorName !== undefined) {
-      updateData.assessorName = validatedData.assessorName;
-    }
-    if (validatedData.assessorRole !== undefined) {
-      updateData.assessorRole = validatedData.assessorRole;
-    }
-    if (validatedData.approvedBy !== undefined) {
-      updateData.approvedBy = validatedData.approvedBy;
-    }
-    if (validatedData.approvalDate !== undefined) {
-      updateData.approvalDate = validatedData.approvalDate
-        ? new Date(validatedData.approvalDate)
-        : null;
-    }
+    const dbData = prepareDPIAForDB(validatedData);
 
     const dpia = await prisma.dPIA.update({
       where: { projectId },
-      data: updateData,
+      data: dbData,
     });
 
-    // Parse JSON fields for response
-    const parsedDPIA = {
-      ...dpia,
-      dataCategories: dpia.dataCategories ? JSON.parse(dpia.dataCategories) : null,
-      sensitiveDataTypes: dpia.sensitiveDataTypes ? JSON.parse(dpia.sensitiveDataTypes) : null,
-      identifiedRisks: dpia.identifiedRisks ? JSON.parse(dpia.identifiedRisks) : null,
-    };
-
-    return NextResponse.json(parsedDPIA);
+    return NextResponse.json(parseDPIA(dpia));
   } catch (err) {
-    if (err instanceof Error && err.name === "ZodError") {
-      return NextResponse.json(
-        { error: "Invalid input data", details: err },
-        { status: 400 }
-      );
-    }
-
-    console.error("Error updating DPIA:", err);
-    return NextResponse.json(
-      { error: "Failed to update DPIA" },
-      { status: 500 }
-    );
+    return handleApiError(err, "update DPIA");
   }
 }
 
@@ -293,16 +150,9 @@ export async function DELETE(
 
   const { projectId } = await params;
 
-  // Verify project belongs to organization
-  const project = await prisma.project.findFirst({
-    where: {
-      id: projectId,
-      organizationId: organization!.id,
-    },
-  });
-
+  const project = await verifyProjectAccess(projectId, organization!.id);
   if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
+    return projectNotFoundResponse();
   }
 
   // Check if DPIA exists

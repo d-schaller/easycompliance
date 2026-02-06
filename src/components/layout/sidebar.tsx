@@ -26,11 +26,13 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-full w-64 flex-col bg-gray-900">
-      <div className="flex h-16 items-center px-6">
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <Shield className="h-8 w-8 text-blue-500" />
-          <span className="text-xl font-bold text-white">EasyCompliance</span>
+    <div className="flex h-full w-64 flex-col border-r border-border bg-sidebar">
+      <div className="flex h-16 items-center px-6 border-b border-border">
+        <Link href="/dashboard" className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+            <Shield className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <span className="text-lg font-semibold text-foreground">EasyCompliance</span>
         </Link>
       </div>
 
@@ -43,23 +45,23 @@ export function Sidebar() {
               key={item.name}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-gray-800 text-white"
-                  : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                  ? "bg-accent text-foreground"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
               )}
             >
-              <item.icon className="h-5 w-5" />
+              <item.icon className={cn("h-5 w-5", isActive && "text-primary")} />
               {item.name}
             </Link>
           );
         })}
       </nav>
 
-      <div className="border-t border-gray-800 p-3">
+      <div className="border-t border-border p-3">
         <Button
           variant="ghost"
-          className="w-full justify-start gap-3 text-gray-400 hover:bg-gray-800 hover:text-white"
+          className="w-full justify-start gap-3 text-muted-foreground hover:bg-accent hover:text-foreground"
           onClick={() => signOut({ callbackUrl: "/login" })}
         >
           <LogOut className="h-5 w-5" />
