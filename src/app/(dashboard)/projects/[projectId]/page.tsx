@@ -11,10 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Plus, CheckCircle, Clock, XCircle } from "lucide-react";
+import { ArrowLeft, Plus, CheckCircle, Clock, XCircle, Shield, FileText, AlertTriangle } from "lucide-react";
 import { AddControlsDialog } from "./add-controls-dialog";
 import { ControlsTable } from "./controls-table";
 import { DownloadReportButton } from "./download-report-button";
+import { CreateDPIAButton } from "./create-dpia-button";
+import { OrganizationalMeasuresSection } from "./organizational-measures-section";
 
 export default async function ProjectDetailPage({
   params,
@@ -52,6 +54,10 @@ export default async function ProjectDetailPage({
           },
         },
         orderBy: { control: { code: "asc" } },
+      },
+      dpia: true,
+      organizationalMeasures: {
+        orderBy: { createdAt: "desc" },
       },
     },
   });
@@ -206,6 +212,135 @@ export default async function ProjectDetailPage({
           </CardContent>
         </Card>
       </div>
+
+      {/* DPIA Section */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5 text-blue-600" />
+              <div>
+                <CardTitle>Data Protection Impact Assessment</CardTitle>
+                <CardDescription>
+                  DPIA in accordance with Art. 22 Swiss FADP
+                </CardDescription>
+              </div>
+            </div>
+            {project.dpia ? (
+              <Link href={`/projects/${project.id}/dpia`}>
+                <Button variant="outline">
+                  <FileText className="mr-2 h-4 w-4" />
+                  View DPIA
+                </Button>
+              </Link>
+            ) : (
+              <CreateDPIAButton projectId={project.id} />
+            )}
+          </div>
+        </CardHeader>
+        <CardContent>
+          {project.dpia ? (
+            <div className="flex items-center justify-between">
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-sm text-gray-500">Status</p>
+                  <Badge
+                    className={
+                      project.dpia.status === "APPROVED"
+                        ? "bg-green-100 text-green-800"
+                        : project.dpia.status === "IN_REVIEW"
+                        ? "bg-blue-100 text-blue-800"
+                        : project.dpia.status === "REQUIRES_CONSULTATION"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : ""
+                    }
+                    variant={project.dpia.status === "DRAFT" ? "outline" : "default"}
+                  >
+                    {project.dpia.status === "APPROVED"
+                      ? "Approved"
+                      : project.dpia.status === "IN_REVIEW"
+                      ? "In Review"
+                      : project.dpia.status === "REQUIRES_CONSULTATION"
+                      ? "Requires FDPIC Consultation"
+                      : "Draft"}
+                  </Badge>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Preliminary Risk</p>
+                  <Badge
+                    className={
+                      project.dpia.preliminaryRiskLevel === "LOW"
+                        ? "bg-green-100 text-green-800"
+                        : project.dpia.preliminaryRiskLevel === "MEDIUM"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : project.dpia.preliminaryRiskLevel === "HIGH"
+                        ? "bg-red-100 text-red-800"
+                        : ""
+                    }
+                    variant={!project.dpia.preliminaryRiskLevel ? "outline" : "default"}
+                  >
+                    {project.dpia.preliminaryRiskLevel || "Not Assessed"}
+                  </Badge>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Residual Risk</p>
+                  <Badge
+                    className={
+                      project.dpia.residualRiskLevel === "LOW"
+                        ? "bg-green-100 text-green-800"
+                        : project.dpia.residualRiskLevel === "MEDIUM"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : project.dpia.residualRiskLevel === "HIGH"
+                        ? "bg-red-100 text-red-800"
+                        : ""
+                    }
+                    variant={!project.dpia.residualRiskLevel ? "outline" : "default"}
+                  >
+                    {project.dpia.residualRiskLevel || "Not Assessed"}
+                  </Badge>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500">Last Updated</p>
+                  <p className="text-sm font-medium">
+                    {new Date(project.dpia.updatedAt).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+              {project.dpia.requiresFDPICConsultation && (
+                <div className="flex items-center gap-2 text-yellow-600">
+                  <AlertTriangle className="h-4 w-4" />
+                  <span className="text-sm">FDPIC Consultation Required</span>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <Shield className="h-12 w-12 text-gray-400" />
+              <h3 className="mt-4 text-lg font-medium">No DPIA created</h3>
+              <p className="mt-2 text-gray-500 max-w-md">
+                Create a Data Protection Impact Assessment to evaluate privacy risks
+                and document protective measures for this project.
+              </p>
+              <div className="mt-4">
+                <CreateDPIAButton projectId={project.id} />
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Organizational Measures Section */}
+      <OrganizationalMeasuresSection
+        projectId={project.id}
+        measures={project.organizationalMeasures.map((m) => ({
+          id: m.id,
+          name: m.name,
+          description: m.description,
+          category: m.category,
+          status: m.status,
+          responsiblePerson: m.responsiblePerson,
+        }))}
+      />
 
       <Card>
         <CardHeader>

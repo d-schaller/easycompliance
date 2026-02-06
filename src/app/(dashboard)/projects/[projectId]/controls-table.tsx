@@ -25,39 +25,24 @@ function StatusIcon({ status }: { status: string }) {
   switch (status) {
     case "IMPLEMENTED":
       return (
-        <CheckCircle2
-          className="h-4 w-4 text-green-600"
-          title="Implemented"
-        />
+        <CheckCircle2 className="h-4 w-4 text-green-600" />
       );
     case "IN_PROGRESS":
       return (
-        <Clock
-          className="h-4 w-4 text-blue-600"
-          title="In Progress"
-        />
+        <Clock className="h-4 w-4 text-blue-600" />
       );
     case "PARTIALLY_IMPLEMENTED":
       return (
-        <AlertCircle
-          className="h-4 w-4 text-yellow-600"
-          title="Partially Implemented"
-        />
+        <AlertCircle className="h-4 w-4 text-yellow-600" />
       );
     case "NOT_APPLICABLE":
       return (
-        <MinusCircle
-          className="h-4 w-4 text-gray-400"
-          title="Not Applicable"
-        />
+        <MinusCircle className="h-4 w-4 text-gray-400" />
       );
     case "NOT_STARTED":
     default:
       return (
-        <Circle
-          className="h-4 w-4 text-gray-300"
-          title="Not Started"
-        />
+        <Circle className="h-4 w-4 text-gray-300" />
       );
   }
 }
@@ -152,7 +137,7 @@ export function ControlsTable({ projectId, controls }: ControlsTableProps) {
                       </a>
                     )}
                     {pc.implementationDescription && (
-                      <FileText className="h-4 w-4 text-gray-400" title="Has implementation description" />
+                      <FileText className="h-4 w-4 text-gray-400" />
                     )}
                   </div>
                 </TableCell>

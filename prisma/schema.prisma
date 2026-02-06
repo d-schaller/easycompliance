@@ -148,11 +148,73 @@ model Project {
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
 
-  organization Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  controls     ProjectControl[]
+  organization            Organization            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  controls                ProjectControl[]
+  dpia                    DPIA?
+  organizationalMeasures  OrganizationalMeasure[]
 
   @@index([organizationId])
   @@index([status])
+}
+
+model OrganizationalMeasure {
+  id                String               @id @default(cuid())
+  projectId         String
+  name              String
+  description       String?              @db.Text
+  category          String?              // e.g., "Policy", "Training", "Process", "Access Control"
+  status            ImplementationStatus @default(NOT_STARTED)
+  responsiblePerson String?
+  dueDate           DateTime?
+  completedAt       DateTime?
+  evidence          String?              @db.Text
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([status])
+}
+
+model DPIA {
+  id        String     @id @default(cuid())
+  projectId String     @unique
+  status    DPIAStatus @default(DRAFT)
+
+  // Stage 1: Preliminary Assessment
+  processingDescription  String? @db.Text
+  dataCategories         String? @db.Text // JSON array
+  sensitiveDataTypes     String? @db.Text // JSON array
+  dataSubjects           String? @db.Text
+  estimatedDataSubjects  String?
+  processingPurpose      String? @db.Text
+  legalBasis             String? @db.Text
+  technologyDescription  String? @db.Text
+  preliminaryRiskLevel   RiskLevel?
+
+  // Stage 2: Full Assessment
+  identifiedRisks           String? @db.Text // JSON array
+  dataProtectionByDesign    String? @db.Text
+  residualRiskLevel         RiskLevel?
+  residualRiskJustification String? @db.Text
+
+  // Consultation
+  requiresFDPICConsultation Boolean   @default(false)
+  dpoConsulted              Boolean   @default(false)
+  dpoName                   String?
+  dpoOpinion                String?   @db.Text
+  fdpicSubmissionDate       DateTime?
+
+  // Metadata
+  assessorName String?
+  assessorRole String?
+  approvedBy   String?
+  approvalDate DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
 enum ProjectStatus {
@@ -191,4 +253,17 @@ enum ImplementationStatus {
   IMPLEMENTED
   NOT_APPLICABLE
   PARTIALLY_IMPLEMENTED
+}
+
+enum DPIAStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  REQUIRES_CONSULTATION
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
 }
